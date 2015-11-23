@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Topo</string>
+    <string name="app_name">PocketTopo</string>
     <string name="action_settings">Settings</string>
+    <string name="b_training">Training</string>
+    <string name="b_spel">Speel</string>
+    <string name="b_tutorial">Tutorial</string>
+    <string name="b_settings">Settings</string>
 </resources>

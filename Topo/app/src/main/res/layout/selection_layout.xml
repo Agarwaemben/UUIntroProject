@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Selectie"
+        android:id="@+id/tAppName"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal" />
+
+    <CheckBox
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Provincies"
+        android:id="@+id/checkBox"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <CheckBox
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Steden"
+        android:id="@+id/checkBox2"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <CheckBox
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Wateren"
+        android:id="@+id/checkBox3"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <CheckBox
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Gebergten"
+        android:id="@+id/checkBox3"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+
+
+</LinearLayout>
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="verder"
+        android:id="@+id/button2"
+        android:textSize="24sp"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="GameScherm"/>
+</RelativeLayout>

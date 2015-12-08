@@ -13,19 +13,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/b_training"
+        android:text="Oefen"
         android:id="@+id/bTraining"
         android:maxWidth="200dp"
         android:minWidth="200dp"
         android:textSize="18sp"
         android:layout_below="@+id/tAppName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:onClick="SelectieScherm"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/b_spel"
+        android:text="mini game"
         android:id="@+id/bSpeel"
         android:layout_below="@+id/bTraining"
         android:layout_alignLeft="@+id/bTraining"
@@ -33,12 +34,14 @@
         android:layout_marginTop="30dp"
         android:layout_alignRight="@+id/bTraining"
         android:layout_alignEnd="@+id/bTraining"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="MiniGameScherm"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/b_tutorial"
+        android:text="instellingen"
         android:id="@+id/bTutorial"
         android:layout_below="@+id/bSpeel"
         android:layout_alignRight="@+id/bSpeel"
@@ -46,12 +49,14 @@
         android:layout_alignLeft="@+id/bSpeel"
         android:layout_alignStart="@+id/bSpeel"
         android:layout_marginTop="30dp"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="InstellingenScherm"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/b_settings"
+        android:text="Info"
         android:id="@+id/bSettings"
         android:layout_below="@+id/bTutorial"
         android:layout_marginTop="30dp"
@@ -59,15 +64,19 @@
         android:layout_alignEnd="@+id/bTutorial"
         android:layout_alignLeft="@+id/bTutorial"
         android:layout_alignStart="@+id/bTutorial"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="InfoScherm"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_name"
+        android:text="PocketTopo"
         android:id="@+id/tAppName"
+        android:textSize="40sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="40sp" />
+        android:layout_alignLeft="@+id/bTraining"
+        android:layout_alignStart="@+id/bTraining"
+        android:layout_marginTop="-50dp" />
 </RelativeLayout>

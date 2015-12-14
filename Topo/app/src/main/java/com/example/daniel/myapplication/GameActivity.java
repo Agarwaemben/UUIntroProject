@@ -7,11 +7,17 @@ import android.view.View;
 
 import com.example.daniel.myapplication.R;
 
+import java.util.List;
+
 public class GameActivity extends Activity {
+    List<Vraag> vragenlijst;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
     }
+
+
 }
 

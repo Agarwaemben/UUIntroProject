@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
+    <string name="nederland.xml">Nederland</string>
+    <string name="InfoText">Het spel PocketTopo zal jou helpen met het leren van topografie door middel van aanwijsvragen, multiplechoicevragen of openvragen. Aanwijsvragen worden beantwoordt door middel van de juiste plekken aan te wijzen , multiplechoice vragen door de juiste meerkeuze antwoord te nemen en openvragen door middel van het juiste antwoord te typen. voor meer informatie kunt u de website bezoeken.</string>
 </resources>

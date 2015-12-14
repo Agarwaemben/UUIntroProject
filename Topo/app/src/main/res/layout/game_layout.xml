@@ -68,5 +68,6 @@
         android:src="@drawable/nederland"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/Meerkeuze_B"/>
+        android:layout_above="@id/Meerkeuze_B"
+        android:contentDescription="@string/nederland.xml" />
 </RelativeLayout>

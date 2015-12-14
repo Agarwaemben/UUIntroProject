@@ -79,4 +79,5 @@
         android:layout_alignLeft="@+id/bTraining"
         android:layout_alignStart="@+id/bTraining"
         android:layout_marginTop="-50dp" />
+
 </RelativeLayout>

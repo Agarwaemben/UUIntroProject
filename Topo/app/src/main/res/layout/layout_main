@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/earth1"/>
+
+    <TextView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PocketTopo"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+        android:textSize="50sp"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/oefen_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oefen"
+        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:background="@drawable/roundbutton"
+        android:textSize="35sp"
+        android:padding="5dp"
+        android:layout_margin="15dp"
+        android:onClick="oefenButton"
+        android:layout_below="@id/background"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/game_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game"
+        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:background="@drawable/roundbutton"
+        android:textSize="35sp"
+        android:padding="5dp"
+        android:layout_margin="15dp"
+        android:onClick="gameButton"
+        android:layout_below="@id/oefen_knop"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/instellingen_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:background="@drawable/roundbutton"
+        android:textSize="35sp"
+        android:padding="5dp"
+        android:layout_margin="15dp"
+        android:onClick="settingsButton"
+        android:layout_below="@id/game_knop"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/help_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:background="@drawable/roundbutton"
+        android:textSize="35sp"
+        android:padding="5dp"
+        android:layout_margin="15dp"
+        android:onClick="infoButton"
+        android:layout_below="@id/instellingen_knop"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

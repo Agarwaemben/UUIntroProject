@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="Score"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/retry_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/roundbutton"
+        android:onClick="retryButton"
+        android:padding="5dp"
+        android:text="Retry"
+        android:textAllCaps="true"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/quit_knop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:layout_toEndOf="@id/retry_knop"
+        android:layout_toRightOf="@id/retry_knop"
+        android:background="@drawable/roundbutton"
+        android:onClick="quitButton"
+        android:padding="5dp"
+        android:text="Quit"
+        android:textAllCaps="true"
+        android:textSize="40sp" />
+
+
+</RelativeLayout>

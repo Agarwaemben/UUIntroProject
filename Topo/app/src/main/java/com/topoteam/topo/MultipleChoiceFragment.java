@@ -44,8 +44,4 @@ public class MultipleChoiceFragment extends Fragment implements QuestionFragment
     public void showHint() {
 
     }
-
-    private void onClick(View v){
-        qListener.CheckAnswer("test");
-    }
 }

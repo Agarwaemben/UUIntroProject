@@ -26,7 +26,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Provincies"
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBox_provincies"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
@@ -35,7 +35,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Steden"
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBox_steden"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
@@ -44,7 +44,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Wateren"
-            android:id="@+id/checkBox3"
+            android:id="@+id/checkBox_wateren"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
@@ -53,7 +53,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Gebergten"
-            android:id="@+id/checkBox3"
+            android:id="@+id/checkBox_gebergten"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>

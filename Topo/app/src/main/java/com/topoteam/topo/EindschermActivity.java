@@ -23,4 +23,13 @@ public class EindschermActivity extends AppCompatActivity {
         Intent quitInt = new Intent(EindschermActivity.this, MainActivity.class);
         startActivity(quitInt);
     }
+
+    //bereken de score van de gebruiker
+    public int bereken(int goed, int aantal_vragen){
+
+        String s = "Van de"+aantal_vragen"vragen"+goed"goed beantwoord beantwoord"
+
+
+        return Integer.parseInt(s);
+    }
 }

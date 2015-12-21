@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 
     //Optionsmenu verwijderd, omdat we eigen 'Instellingen' knop hebben.

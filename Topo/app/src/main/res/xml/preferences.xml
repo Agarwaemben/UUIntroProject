@@ -1,17 +1,20 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Instellingen"
+        android:key="pref_key_settings">
+        <CheckBoxPreference
+            android:key="pref_key_soundeffects"
+            android:summary="@string/pref_sum_soundeffects"
+            android:title="@string/pref_title_soundeffects"
+            android:defaultValue="true"
+            />
 
-    <CheckBoxPreference
-        android:key="pref_key_soundeffects"
-        android:summary="@string/pref_sum_soundeffects"
-        android:title="@string/pref_title_soundeffects"
-        android:defaultValue="true"
-        />
-
-    <CheckBoxPreference
-        android:key="pref_key_colorblind"
-        android:summary="@string/pref_sum_colorblind"
-        android:title="@string/pref_title_colorblind"
-        android:defaultValue="false"
-        />
+        <CheckBoxPreference
+            android:key="pref_key_colorblind"
+            android:summary="@string/pref_sum_colorblind"
+            android:title="@string/pref_title_colorblind"
+            android:defaultValue="false"
+            />
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -27,7 +27,7 @@ public class EindschermActivity extends AppCompatActivity {
     //bereken de score van de gebruiker
     public int bereken(int goed, int aantal_vragen){
 
-        String s = "Van de"+aantal_vragen"vragen"+goed"goed beantwoord beantwoord"
+        String s = "Van de"+aantal_vragen+"vragen"+goed+"goed beantwoord beantwoord";
 
 
         return Integer.parseInt(s);

@@ -1,6 +1,7 @@
 package com.topoteam.topo;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //Database checken, als er geen is deze aanmaken, als er wel een is deze openen
+        TopoHelper myDbHelper = new TopoHelper(this);
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
+        try {
+            myDbHelper.openDataBase();
+        } catch (SQLException sqle) {
+            throw sqle;
+        }
     }
 
     //Optionsmenu verwijderd, omdat we eigen 'Instellingen' knop hebben.

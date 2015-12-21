@@ -17,7 +17,7 @@ import android.util.Log;
 public class TopoHelper extends SQLiteOpenHelper
 {
     private static String TAG = "DataBaseHelper"; // Tag voor logcat
-    //locatie van de database op hett apparaat
+    //locatie van de database op het apparaat
     private static String DB_PATH = "";
     private static String DB_NAME ="TopoBase.db";// Database naam
     private SQLiteDatabase mDataBase;
@@ -28,7 +28,7 @@ public class TopoHelper extends SQLiteOpenHelper
         super(context, DB_NAME, null, 1);
         //path aanpassen aan android versie (gaf problemen met bepaalde versies van Android)
         if(android.os.Build.VERSION.SDK_INT >= 17){
-            DB_PATH = "/data/data/com.example.daniel.myapplication/databases/";
+            DB_PATH = "/data/data/com.topoteam.topo/databases/";
         }
         else
         {
@@ -58,7 +58,7 @@ public class TopoHelper extends SQLiteOpenHelper
         }
     }
 
-    //checken of de database bestaat op /data/data/com.example.daniel.myapplication/databases/TopoBase.db
+    //checken of de database bestaat op /data/data/com.topoteam.topo/databases/TopoBase.db
     private boolean checkDataBase()
     {
         File dbFile = new File(DB_PATH + DB_NAME);

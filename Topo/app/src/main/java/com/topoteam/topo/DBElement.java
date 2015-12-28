@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DBElement extends Activity{
+public class DBElement{
     private String naam;
     private int locatieX;
     private int locatieY;
@@ -12,7 +12,6 @@ public class DBElement extends Activity{
     private String land;
     private String continent;
     private int hoofdstadvan;
-    TopoHelper Helper = new TopoHelper(this);
 
     public String getNaam(){return naam;}
     public String getProvincie(){return provincie;}

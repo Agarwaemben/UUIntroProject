@@ -7,4 +7,11 @@
     <string name="pref_title_soundeffects">Geluidseffecten</string>
     <string name="pref_sum_colorblind">Zet het kleurenschema voor kleurenblinden aan/uit.</string>
     <string name="pref_title_colorblind">Kleurenblind modus</string>
+    
+    <string-array name="regio_keuzes">
+        <item>Nederland</item>
+        <item>Europa</item>
+        <item>Wereld</item>
+    </string-array>
+    
 </resources>

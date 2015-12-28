@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -27,7 +28,7 @@ public class TopoHelper extends SQLiteOpenHelper
     {
         super(context, DB_NAME, null, 1);
         //path aanpassen aan android versie (gaf problemen met bepaalde versies van Android)
-        if(android.os.Build.VERSION.SDK_INT >= 17){
+        if(android.os.Build.VERSION.SDK_INT >= 17){ 
             DB_PATH = "/data/data/com.topoteam.topo/databases/";
         }
         else
@@ -107,11 +108,22 @@ public class TopoHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    //************
-    //testmethode
-    //************
-    public Cursor returndata(){
-        return mDataBase.query("Kaart_Nederland", new String[]{"Stad"},null,null,null,null,null);
 
+    public ArrayList<DBElement> getTopodata(String TABLE, Integer SELECTIE) {
+        ArrayList<DBElement> values = new ArrayList<DBElement>();
+        String query = "SELECT * from"+ TABLE + " WHERE Selectie" + SELECTIE;
+        Cursor cursor = mDataBase.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            do {
+                values.add(new DBElement(cursor.getString(cursor
+                        .getColumnIndex("naam")), cursor.getInt(cursor.getColumnIndex("locatieX")), cursor.getInt(cursor.getColumnIndex("locatieY")),cursor.getString(cursor
+                        .getColumnIndex("provincie")),cursor.getString(cursor
+                        .getColumnIndex("land")),cursor.getString(cursor
+                        .getColumnIndex("continent")),cursor.getInt(cursor
+                        .getColumnIndex("hoofdstadvan"))));
+            } while (cursor.moveToNext());
+
+        }
+        return values;
     }
 }

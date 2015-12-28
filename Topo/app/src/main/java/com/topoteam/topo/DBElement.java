@@ -1,6 +1,10 @@
 package com.topoteam.topo;
 
-public class DBElement {
+import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+public class DBElement extends Activity{
     private String naam;
     private int locatieX;
     private int locatieY;
@@ -8,6 +12,7 @@ public class DBElement {
     private String land;
     private String continent;
     private int hoofdstadvan;
+    TopoHelper Helper = new TopoHelper(this);
 
     public String getNaam(){return naam;}
     public String getProvincie(){return provincie;}
@@ -43,4 +48,6 @@ public class DBElement {
     public DBElement(String DBResult){
         // construeer element uit 1 entry van de database
     }
+
+
 }

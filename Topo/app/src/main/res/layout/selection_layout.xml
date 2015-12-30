@@ -1,78 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
+        android:gravity="center|top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/tAppName"
+            android:text="Selectie"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp"
+            android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Selectie"
-            android:id="@+id/tAppName"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="40sp"
-            android:layout_gravity="center_horizontal" />
+            />
+
+        <TextView
+            android:text="Selecteer de regio die je wilt oefenen"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/regio_selectie_spinner"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecteer welke onderdelen je wilt oefenen"
+            android:layout_marginBottom="30dp"/>
+
+        <LinearLayout
+            android:gravity="center|left"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <CheckBox
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Provincies"
-            android:id="@+id/checkBox_provincies"
-            android:textSize="24sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
-
-        <CheckBox
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Steden"
+            android:text="  Steden"
             android:id="@+id/checkBox_steden"
             android:textSize="24sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <CheckBox
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Wateren"
+            android:text="  Provincies"
+            android:id="@+id/checkBox_provincies"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:text="  Wateren"
             android:id="@+id/checkBox_wateren"
             android:textSize="24sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <CheckBox
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Gebergten"
+            android:text="  Gebergten"
             android:id="@+id/checkBox_gebergten"
             android:textSize="24sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
+        <CheckBox
+            android:text="  Landen"
+            android:id="@+id/checkBox_landen"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Selecteer hoe je wilt oefenen"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:gravity="center|left"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <CheckBox
+            android:text="  Meerkeuze vragen"
+            android:id="@+id/checkBox_meerkeuzeVraag"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:text="  Aanwijs vragen"
+            android:id="@+id/checkBox_aanwijsVraag"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:text="  Invul vragen"
+            android:id="@+id/checkBox_invulVraag"
+            android:textSize="24sp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:text="Start spel"
+            android:id="@+id/button2"
+            android:textSize="24sp"
+            android:onClick="onStartSpelClick"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
 
     </LinearLayout>
 
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="verder"
-        android:id="@+id/button2"
-        android:textSize="24sp"
-        android:layout_gravity="right"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="GameScherm"/>
-</RelativeLayout>
+</ScrollView>

@@ -4,70 +4,52 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="70dp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A"
-        android:id="@+id/Meerkeuze_A"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Score:"
+        android:id="@+id/textview_Score"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="B"
-        android:id="@+id/Meerkeuze_B"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Meerkeuze_A"
-        android:layout_toEndOf="@+id/Meerkeuze_A" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="C"
-        android:id="@+id/Meerkeuze_C"
-        android:textSize="20sp"
-
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Meerkeuze_B"
-        android:layout_toEndOf="@+id/Meerkeuze_B" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="D"
-        android:id="@+id/Meerkeuze_D"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Meerkeuze_C"
-        android:layout_toEndOf="@+id/Meerkeuze_C" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pass"
-        android:id="@+id/Pass"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Meerkeuze_D"
-        android:layout_toEndOf="@+id/Meerkeuze_D"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Kaart_Nederland"
-        android:src="@drawable/nederland"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Vraag"
+        android:id="@+id/textview_Vraagcounter"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/Meerkeuze_B"
-        android:contentDescription="@string/nederland.xml" />
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/container_Vraagfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/textview_Score"
+        android:layout_above="@+id/button_Hint">
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Kaart:"
+        android:id="@+id/textview_Settings"
+        android:layout_below="@+id/container_Vraagfragment"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HINT"
+        android:id="@+id/button_Hint"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

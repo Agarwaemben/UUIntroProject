@@ -80,11 +80,9 @@ public class SelectionActivity extends Activity {
 
     //Methode om door te gaan naar het oefenspel
     //TODO hoe moeten we de selectie overbrengen?
-    /*public void onStartSpelClick (View view) {
+    public void onStartSpelClick (View view) {
         Intent goToGameActivity = new Intent(this,GameActivity.class);
-        //wat moet hier gebeuren?
-        goToGameActivity.putExtra();
         startActivity(goToGameActivity);
 
-    }*/
+    }
 }

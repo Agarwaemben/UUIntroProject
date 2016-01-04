@@ -23,6 +23,8 @@ public class TopoHelper extends SQLiteOpenHelper
     private static String DB_NAME ="TopoBase.db";// Database naam
     private SQLiteDatabase mDataBase;
     private final Context mContext;
+    private Cursor cursor;
+    String[] columns = new String[]{"Plaats","locatieX","locatieY","Provincie","Hoofdstad","Soort"};
 
     public TopoHelper(Context context)
     {
@@ -109,21 +111,22 @@ public class TopoHelper extends SQLiteOpenHelper
 
     }
 
-    public ArrayList<DBElement> getTopodata(String TABLE, Integer SELECTIE) {
+    public ArrayList<DBElement> getTopodata(String TABLE, String Soort) {
         ArrayList<DBElement> values = new ArrayList<DBElement>();
-        String query = "SELECT * from"+ TABLE + " WHERE Selectie" + SELECTIE;
-        Cursor cursor = mDataBase.rawQuery(query, null);
-        if(cursor.moveToFirst()){
-            do {
-                values.add(new DBElement(cursor.getString(cursor
-                        .getColumnIndex("naam")), cursor.getInt(cursor.getColumnIndex("locatieX")), cursor.getInt(cursor.getColumnIndex("locatieY")),cursor.getString(cursor
-                        .getColumnIndex("provincie")),cursor.getString(cursor
-                        .getColumnIndex("land")),cursor.getString(cursor
-                        .getColumnIndex("continent")),cursor.getInt(cursor
-                        .getColumnIndex("hoofdstadvan"))));
-            } while (cursor.moveToNext());
+        String query = "SELECT * FROM "+ TABLE + " WHERE Soort = ?";
+        cursor = mDataBase.rawQuery(query,new String[] {"'" + Soort + "'"});
+            if(cursor.moveToFirst()){
+                    do {
+                        values.add(new DBElement(cursor.getString(cursor
+                                .getColumnIndex("Plaats")), cursor.getInt(cursor.getColumnIndex("locatieX")), cursor.getInt(cursor.getColumnIndex("locatieY")),cursor.getString(cursor
+                                .getColumnIndex("Provincie")),cursor.getString(cursor
+                                .getColumnIndex("Land")),cursor.getString(cursor
+                                .getColumnIndex("continent")),cursor.getInt(cursor
+                                .getColumnIndex("Hoofdstad"))));
+                } while (cursor.moveToNext());
 
-        }
-        return values;
+            }
+            return values;
     }
+
 }

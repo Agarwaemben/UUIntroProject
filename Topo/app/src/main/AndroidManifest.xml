@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectionActivity"></activity>
-        <activity android:name=".MiniGameActivity"></activity>
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".InfoActivity"></activity>
         <activity android:name=".GameActivity"></activity>

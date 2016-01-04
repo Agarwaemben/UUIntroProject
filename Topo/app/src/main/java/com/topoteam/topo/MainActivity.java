@@ -92,9 +92,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(instellingen);
     }
 
-    public void MiniGameScherm(View view)
-    {
-        Intent minigame = new Intent(this,MiniGameActivity.class);
-        startActivity(minigame);
-    }
+
 }

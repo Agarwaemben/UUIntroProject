@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     private void endGame(){
         Intent intent = new Intent(this, EindschermActivity.class);
         intent.putExtra("score", score);
-
+        intent.putExtra("aantal_vragen",vragenlijst.size());
         startActivity(intent);
     }
 

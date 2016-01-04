@@ -14,37 +14,59 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="50sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:id="@+id/textView" />
 
     <Button
         android:id="@+id/retry_knop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="40dp"
         android:background="@drawable/roundbutton"
         android:onClick="retryButton"
         android:padding="5dp"
         android:text="Retry"
         android:textAllCaps="true"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/quit_knop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="40dp"
-        android:layout_toEndOf="@id/retry_knop"
-        android:layout_toRightOf="@id/retry_knop"
         android:background="@drawable/roundbutton"
         android:onClick="quitButton"
         android:padding="5dp"
         android:text="Quit"
         android:textAllCaps="true"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
+    <Button
+        android:id="@+id/Home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbutton"
+        android:onClick="homeButton"
+        android:padding="5dp"
+        android:text="Home"
+        android:textAllCaps="true"
+        android:textSize="40sp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goed_beantwoord"
+        android:textSize="40sp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp" />
 
 </RelativeLayout>

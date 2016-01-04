@@ -39,8 +39,8 @@ public class EindschermActivity extends AppCompatActivity {
 
     public void homeButton()
     {
-        Intent intent = new Intent(EindschermActivity.this, MainActivity.class);
-        startActivity(intent);
+        Intent home = new Intent(EindschermActivity.this, MainActivity.class);
+        startActivity(home);
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class EindschermActivity extends AppCompatActivity {
@@ -12,6 +13,17 @@ public class EindschermActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eindscherm_layout);
+
+
+        // Vind Intent, zodat we de score kunnen pakken vanuit deze intent
+        Intent gameactivity = getIntent();
+        int score = gameactivity.getIntExtra("score", 0);
+        int aantal_vragen = gameactivity.getIntExtra("aantal_vragen", 1);
+
+        //laat de score zien op het scherm
+        TextView laatste_score = (TextView)findViewById(R.id.goed_beantwoord);
+        laatste_score.setText("Je hebt"+ score+"van de"+aantal_vragen+"goed beantwoord");
+
     }
 
     public void retryButton(View view) {
@@ -20,16 +32,15 @@ public class EindschermActivity extends AppCompatActivity {
     }
 
     public void quitButton(View view) {
-        Intent quitInt = new Intent(EindschermActivity.this, MainActivity.class);
-        startActivity(quitInt);
+        finish();
+        System.exit(0);
     }
 
-    //bereken de score van de gebruiker
-    public int bereken(int goed, int aantal_vragen){
 
-        String s = "Van de"+aantal_vragen+"vragen"+goed+"goed beantwoord beantwoord";
-
-
-        return Integer.parseInt(s);
+    public void homeButton()
+    {
+        Intent intent = new Intent(EindschermActivity.this, MainActivity.class);
+        startActivity(intent);
     }
+
 }

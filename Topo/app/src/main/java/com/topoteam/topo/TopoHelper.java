@@ -24,7 +24,6 @@ public class TopoHelper extends SQLiteOpenHelper
     private SQLiteDatabase mDataBase;
     private final Context mContext;
     private Cursor cursor;
-    String[] columns = new String[]{"Plaats","locatieX","locatieY","Provincie","Hoofdstad","Soort"};
 
     public TopoHelper(Context context)
     {
@@ -112,9 +111,10 @@ public class TopoHelper extends SQLiteOpenHelper
     }
 
     public ArrayList<DBElement> getTopodata(String TABLE, String Soort) {
+        String[] SelectionArgs = new String[] {"'" + Soort + "'"};
         ArrayList<DBElement> values = new ArrayList<DBElement>();
-        String query = "SELECT * FROM "+ TABLE + " WHERE Soort = ?";
-        cursor = mDataBase.rawQuery(query,new String[] {"'" + Soort + "'"});
+        String query = "SELECT * FROM "+ TABLE + " WHERE Soort = ? ORDER BY RANDOM() LIMIT 1";
+        cursor = mDataBase.rawQuery(query, SelectionArgs);
             if(cursor.moveToFirst()){
                     do {
                         values.add(new DBElement(cursor.getString(cursor

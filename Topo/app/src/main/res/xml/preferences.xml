@@ -2,11 +2,19 @@
     <PreferenceCategory
         android:title="Instellingen"
         android:key="pref_key_settings">
+
+        <CheckBoxPreference
+            android:key="pref_key_repeatq"
+            android:summary="@string/pref_sum_repeatq"
+            android:title="@string/pref_title_repeatq"
+            android:defaultValue="true"
+            />
+
         <CheckBoxPreference
             android:key="pref_key_soundeffects"
             android:summary="@string/pref_sum_soundeffects"
             android:title="@string/pref_title_soundeffects"
-            android:defaultValue="true"
+            android:defaultValue="false"
             />
 
         <CheckBoxPreference
@@ -15,6 +23,7 @@
             android:title="@string/pref_title_colorblind"
             android:defaultValue="false"
             />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

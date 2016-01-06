@@ -7,6 +7,8 @@
     <string name="pref_title_soundeffects">Geluidseffecten</string>
     <string name="pref_sum_colorblind">Zet het kleurenschema voor kleurenblinden aan/uit.</string>
     <string name="pref_title_colorblind">Kleurenblind modus</string>
+    <string name="pref_title_repeatq">Herhalen vragen</string>
+    <string name="pref_sum_repeatq">Zet het herhalen van fout beantwoorde vragen aan/uit.</string>
     <string name="info1">Welkom bij PocketTopo! Een leuke en snelle manier om topografie te leren. Hier vind je informatie over de verschillende onderdelen van PocketTopo.</string>
     <string name="info2">Oefen hier de topografie van Nederland, Europa en de Wereld. Er zijn aanwijs-, multiplechoice- en open vragen.</string>
     <string name="info3">Gebruik hier alles wat je hebt geleerd bij het oefenen om een zo hoog mogelijke score te behalen!</string>

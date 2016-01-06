@@ -159,7 +159,7 @@ public class SelectionActivity extends Activity {
 
     public void initializeCheckboxes() {
         checkBoxLanden = (CheckBox) findViewById(R.id.checkBox_landen);
-        checkBoxGebergtes = (CheckBox) findViewById(R.id.checkBox_gebergten);
+        checkBoxGebergtes = (CheckBox) findViewById(R.id.checkBox_gebergtes);
         checkBoxProvincies = (CheckBox) findViewById(R.id.checkBox_provincies);
         checkBoxSteden = (CheckBox) findViewById(R.id.checkBox_steden);
         checkBoxWateren = (CheckBox) findViewById(R.id.checkBox_wateren);

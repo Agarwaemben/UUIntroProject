@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-import java.lang.Boolean;
-
-import javafx.scene.control.CheckBox;
+//import java.lang.Boolean;
+//import javafx.scene.control.CheckBox;
 
 public class SelectionActivity extends Activity {
 
     Spinner spinnerRegio;
     CheckBox checkBoxLanden, checkBoxSteden, checkBoxProvincies, checkBoxWateren, checkBoxGebergtes,
             checkBoxMeerkVraag, checkBoxAanwVraag, checkBoxInvulVraag;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,7 @@ public class SelectionActivity extends Activity {
         initializeCheckboxes();
     }
 
-    //Spinnner
-
-    //Verbind de string-array in strings.xml met de spinner voor de keuze van regio's
+    //Verbindt de string-array in strings.xml met de spinner voor de keuze van regio's
     public void addItemsToSelectionSpinner(){
         spinnerRegio = (Spinner) findViewById(R.id.regio_selectie_spinner);
 
@@ -49,7 +47,7 @@ public class SelectionActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                (TextView)FindViewById(R.id.onderdeel_textview).setEnabled();
+                ((TextView)findViewById(R.id.onderdeel_textview)).setEnabled(true);
                 //Als de user een keuze heeft gemaakt slaan we die op
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
@@ -66,7 +64,6 @@ public class SelectionActivity extends Activity {
                     emptyCheckBox();
                 }
 
-                //Als de user Europa of Wereld selecteert mag hij niet Provincies selecteren
                 else {
                     checkBoxSteden.setEnabled(true);
                     checkBoxProvincies.setEnabled(false);
@@ -83,9 +80,8 @@ public class SelectionActivity extends Activity {
             }
         });
     }
-    //Einde spinner
 
-    //Onderdelen checkboxen
+    //De methode die wordt aangeroepen als er op een onderdeelkeuze wordt geklikt
     public void onOnderdeelCheckBoxClick (View v) {
 
         //Identificeer op welke checkbox geklikt word, zet dan de check status naar het omgekeerde.
@@ -129,10 +125,11 @@ public class SelectionActivity extends Activity {
             checkBoxInvulVraag.setEnabled(false);
         }
     }
-    //Einde onderdelen checkboxen
 
-    //Vragen checkboxen
+    //De methode die wordt aangeroepen als er op een vraagkeuze wordt geklikt
     public void onVraagCheckBoxClicked (View v) {
+
+        //Identificeren van welke checkbox was aangeklikt
         switch (v.getId()) {
             case R.id.checkBox_meerkeuzeVraag:
                 checkBoxMeerkVraag.toggle();
@@ -147,15 +144,12 @@ public class SelectionActivity extends Activity {
                 break;
         }
 
+        //Doorgaan naar laatste deel van deze activity
         if (checkBoxMeerkVraag.isChecked() || checkBoxAanwVraag.isChecked() || checkBoxInvulVraag.isChecked()) {
-            (TextView)findViewById(R.id.vraag_textview).setEnabled();
-            (Button)findViewById(R.id.start_spel_button).setEnabled();
+            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(true);
+            ((Button)findViewById(R.id.start_spel_button)).setEnabled(true);
         }
-
-
-
     }
-    //Einde Vragen checkboxen
 
     public void initializeCheckboxes() {
         checkBoxLanden = (CheckBox) findViewById(R.id.checkBox_landen);
@@ -164,7 +158,7 @@ public class SelectionActivity extends Activity {
         checkBoxSteden = (CheckBox) findViewById(R.id.checkBox_steden);
         checkBoxWateren = (CheckBox) findViewById(R.id.checkBox_wateren);
 
-        checkBoxMeerkVraag = (CheckBox) findViewById(R.id.checkbox_meerkeuzeVraag)
+        checkBoxMeerkVraag = (CheckBox) findViewById(R.id.checkBox_meerkeuzeVraag);
         checkBoxAanwVraag = (CheckBox) findViewById(R.id.checkBox_aanwijsVraag);
         checkBoxInvulVraag = (CheckBox) findViewById(R.id.checkBox_invulVraag);
     }

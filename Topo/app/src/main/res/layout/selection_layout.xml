@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -18,8 +19,7 @@
             android:textSize="40sp"
             android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:text="Selecteer de regio die je wilt oefenen"
@@ -35,10 +35,12 @@
         </Spinner>
 
         <TextView
+            android:id="@+id/onderdeel_textview"
+            android:text="Selecteer welke onderdelen je wilt oefenen"
+            android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selecteer welke onderdelen je wilt oefenen"
-            android:layout_marginBottom="30dp"/>
+            android:enabled="false"/>
 
         <LinearLayout
             android:gravity="center|left"
@@ -52,7 +54,9 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="onOnderdeelCheckBoxClick"
+            android:enabled="false"/>
 
         <CheckBox
             android:text="  Provincies"
@@ -60,7 +64,9 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:onClick="onOnderdeelCheckBoxClick"
+            android:enabled="false"/>
 
         <CheckBox
             android:text="  Wateren"
@@ -68,7 +74,9 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:onClick="onOnderdeelCheckBoxClick"
+            android:enabled="false"/>
 
         <CheckBox
             android:text="  Gebergten"
@@ -76,24 +84,19 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-        <CheckBox
-            android:text="  Landen"
-            android:id="@+id/checkBox_landen"
-            android:textSize="24sp"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"/>
+            android:onClick="onOnderdeelCheckBoxClick"
+            android:enabled="false"/>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/vraag_textview"
             android:text="Selecteer hoe je wilt oefenen"
             android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false" />
 
         <LinearLayout
             android:gravity="center|left"
@@ -107,7 +110,9 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="onVraagCheckBoxClick"/>
 
         <CheckBox
             android:text="  Aanwijs vragen"
@@ -115,7 +120,9 @@
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="onVraagCheckBoxClick"/>
 
         <CheckBox
             android:text="  Invul vragen"
@@ -123,18 +130,21 @@
             android:textSize="24sp"
             android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="onVraagCheckBoxClick"/>
 
         </LinearLayout>
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:text="Start spel"
-            android:id="@+id/button2"
+            android:id="@+id/start_spel_button"
             android:textSize="24sp"
-            android:onClick="onStartSpelClick"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:enabled="false"
+            android:onClick="onStartSpelClick" />
 
     </LinearLayout>
 

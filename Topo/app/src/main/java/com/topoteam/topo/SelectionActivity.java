@@ -90,19 +90,19 @@ public class SelectionActivity extends Activity {
 
         //Identificeer op welke checkbox geklikt word, zet dan de check status naar het omgekeerde.
         switch (v.getId()) {
-            case R.id.checkBoxSteden:
+            case R.id.checkBox_steden:
                 checkBoxSteden.toggle();
                 break;
-            case R.id.checkBoxProvincies:
+            case R.id.checkBox_provincies:
                 checkBoxLanden.toggle();
                 break;
-            case R.id.checkBoxLanden:
+            case R.id.checkBox_landen:
                 checkBoxLanden.toggle();
                 break;
-            case R.id.checkBoxWateren:
+            case R.id.checkBox_wateren:
                 checkBoxWateren.toggle();
                 break;
-            case R.id.checkBoxGebergtes:
+            case R.id.checkBox_gebergten:
                 checkBoxGebergtes.toggle();
                 break;
             default:
@@ -164,7 +164,7 @@ public class SelectionActivity extends Activity {
         checkBoxSteden = (CheckBox) findViewById(R.id.checkBox_steden);
         checkBoxWateren = (CheckBox) findViewById(R.id.checkBox_wateren);
 
-        checkBoxMeerkVraag = (CheckBox) findViewById(R.id.checkbox_meerkeuzeVraag)
+        checkBoxMeerkVraag = (CheckBox) findViewById(R.id.checkBox_meerkeuzeVraag)
         checkBoxAanwVraag = (CheckBox) findViewById(R.id.checkBox_aanwijsVraag);
         checkBoxInvulVraag = (CheckBox) findViewById(R.id.checkBox_invulVraag);
     }

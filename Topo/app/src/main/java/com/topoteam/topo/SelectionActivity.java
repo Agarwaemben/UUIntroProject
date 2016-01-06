@@ -19,6 +19,7 @@ public class SelectionActivity extends Activity {
     Spinner spinnerRegio;
     CheckBox checkBoxLanden, checkBoxSteden, checkBoxProvincies, checkBoxWateren, checkBoxGebergtes,
             checkBoxMeerkVraag, checkBoxAanwVraag, checkBoxInvulVraag;
+    Button buttonStartSpel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class SelectionActivity extends Activity {
 
         addItemsToSelectionSpinner();
         addListenerToSpinner();
-        initializeCheckboxes();
+        initializeViews();
     }
 
     //Verbindt de string-array in strings.xml met de spinner voor de keuze van regio's
@@ -47,13 +48,12 @@ public class SelectionActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ((TextView)findViewById(R.id.onderdeel_textview)).setEnabled(true);
+                ((TextView) findViewById(R.id.onderdeel_textview)).setEnabled(true);
                 //Als de user een keuze heeft gemaakt slaan we die op
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
                 /*Als de user Nederland selecteert mag hij niet Landen of Gebergtes selecteren.
-                Omdat de gebruiker meerdere keren de spinner kan kiezen, maken we de onderdeel
-                selectie elke keer leeg om verkeerde combinaties te voorkomen. */
+                Om verkeerde mogelijkheden te voorkomen deactiveren / unchecken we de checkboxen */
                 if (itemSelected.equals("Nederland")) {
                     checkBoxSteden.setEnabled(true);
                     checkBoxProvincies.setEnabled(true);
@@ -61,17 +61,18 @@ public class SelectionActivity extends Activity {
                     checkBoxWateren.setEnabled(true);
                     checkBoxGebergtes.setEnabled(false);
 
-                    emptyCheckBox();
-                }
+                    emptyOnderdeelCheckBoxen();
+                    emptyVraagCheckBoxen();
 
-                else {
+                } else {
                     checkBoxSteden.setEnabled(true);
                     checkBoxProvincies.setEnabled(false);
                     checkBoxLanden.setEnabled(true);
                     checkBoxWateren.setEnabled(true);
                     checkBoxGebergtes.setEnabled(true);
 
-                    emptyCheckBox();
+                    emptyOnderdeelCheckBoxen();
+                    emptyVraagCheckBoxen();
                 }
             }
 
@@ -87,27 +88,28 @@ public class SelectionActivity extends Activity {
         //Identificeer op welke checkbox geklikt word, zet dan de check status naar het omgekeerde.
         switch (v.getId()) {
             case R.id.checkBox_steden:
-                checkBoxSteden.toggle();
+                checkBoxSteden.setChecked(checkBoxSteden.isChecked());
                 break;
             case R.id.checkBox_provincies:
-                checkBoxProvincies.toggle();
+                checkBoxProvincies.setChecked(checkBoxProvincies.isChecked());
                 break;
             case R.id.checkBox_landen:
-                checkBoxLanden.toggle();
+                checkBoxLanden.setChecked(checkBoxLanden.isChecked());
                 break;
             case R.id.checkBox_wateren:
-                checkBoxWateren.toggle();
+                checkBoxWateren.setChecked(checkBoxWateren.isChecked());
                 break;
             case R.id.checkBox_gebergtes:
-                checkBoxGebergtes.toggle();
-                break;
-            default:
+                checkBoxGebergtes.setChecked(checkBoxGebergtes.isChecked());
                 break;
         }
 
         //Als tenminste één onderdeel is aangevinkt, wordt de vraagselectie geactiveerd.
         if (checkBoxSteden.isChecked() || checkBoxProvincies.isChecked() || checkBoxLanden.isChecked() ||
                 checkBoxWateren.isChecked() || checkBoxGebergtes.isChecked()) {
+
+            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(true);
+
             checkBoxMeerkVraag.setEnabled(true);
             checkBoxAanwVraag.setEnabled(true);
             checkBoxInvulVraag.setEnabled(true);
@@ -116,42 +118,36 @@ public class SelectionActivity extends Activity {
         /*Als de laatste click event ervoor zorgde dat er geen checkboxen gechecked waren, worden gedeactiveerd.
         * Omdat het doorgaan naar het oefenspel afhankelijk is van of een vraagsoort geselecteerd is, moeten we deze nu resetten.*/
         else {
-            checkBoxMeerkVraag.setChecked(false);
-            checkBoxAanwVraag.setChecked(false);
-            checkBoxInvulVraag.setChecked(false);
-
-            checkBoxMeerkVraag.setEnabled(false);
-            checkBoxAanwVraag.setEnabled(false);
-            checkBoxInvulVraag.setEnabled(false);
+            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(false);
+            emptyVraagCheckBoxen();
         }
     }
 
     //De methode die wordt aangeroepen als er op een vraagkeuze wordt geklikt
-    public void onVraagCheckBoxClicked (View v) {
+    public void onVraagCheckBoxClick (View v) {
 
         //Identificeren van welke checkbox was aangeklikt
         switch (v.getId()) {
             case R.id.checkBox_meerkeuzeVraag:
-                checkBoxMeerkVraag.toggle();
+                checkBoxMeerkVraag.setChecked(checkBoxMeerkVraag.isChecked());
                 break;
             case R.id.checkBox_aanwijsVraag:
-                checkBoxAanwVraag.toggle();
+                checkBoxAanwVraag.setChecked(checkBoxAanwVraag.isChecked());
                 break;
             case R.id.checkBox_invulVraag:
-                checkBoxInvulVraag.toggle();
-                break;
-            default:
+                checkBoxInvulVraag.setChecked(checkBoxInvulVraag.isChecked());
                 break;
         }
 
         //Doorgaan naar laatste deel van deze activity
         if (checkBoxMeerkVraag.isChecked() || checkBoxAanwVraag.isChecked() || checkBoxInvulVraag.isChecked()) {
-            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(true);
-            ((Button)findViewById(R.id.start_spel_button)).setEnabled(true);
+            buttonStartSpel.setEnabled(true);
         }
+
+        else { buttonStartSpel.setEnabled(false); }
     }
 
-    public void initializeCheckboxes() {
+    public void initializeViews() {
         checkBoxLanden = (CheckBox) findViewById(R.id.checkBox_landen);
         checkBoxGebergtes = (CheckBox) findViewById(R.id.checkBox_gebergtes);
         checkBoxProvincies = (CheckBox) findViewById(R.id.checkBox_provincies);
@@ -161,14 +157,26 @@ public class SelectionActivity extends Activity {
         checkBoxMeerkVraag = (CheckBox) findViewById(R.id.checkBox_meerkeuzeVraag);
         checkBoxAanwVraag = (CheckBox) findViewById(R.id.checkBox_aanwijsVraag);
         checkBoxInvulVraag = (CheckBox) findViewById(R.id.checkBox_invulVraag);
+
+        buttonStartSpel = (Button)findViewById(R.id.start_spel_button);
     }
 
-    public void emptyCheckBox () {
+    public void emptyOnderdeelCheckBoxen () {
         checkBoxSteden.setChecked(false);
         checkBoxProvincies.setChecked(false);
         checkBoxLanden.setChecked(false);
         checkBoxWateren.setChecked(false);
         checkBoxGebergtes.setChecked(false);
+    }
+
+    public void emptyVraagCheckBoxen () {
+        checkBoxMeerkVraag.setChecked(false);
+        checkBoxAanwVraag.setChecked(false);
+        checkBoxInvulVraag.setChecked(false);
+
+        checkBoxMeerkVraag.setEnabled(false);
+        checkBoxAanwVraag.setEnabled(false);
+        checkBoxInvulVraag.setEnabled(false);
     }
 
     //Methode om door te gaan naar het oefenspel

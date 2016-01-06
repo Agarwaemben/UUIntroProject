@@ -14,7 +14,7 @@
             android:key="pref_key_soundeffects"
             android:summary="@string/pref_sum_soundeffects"
             android:title="@string/pref_title_soundeffects"
-            android:defaultValue="false"
+            android:defaultValue="true"
             />
 
         <CheckBoxPreference

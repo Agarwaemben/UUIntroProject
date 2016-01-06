@@ -67,6 +67,16 @@
             android:layout_height="wrap_content"
             android:onClick="onOnderdeelCheckBoxClick"
             android:enabled="false"/>
+        
+        <CheckBox
+            android:text="  Landen"
+            android:id="@+id/checkBox_landen"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOnderdeelCheckBoxClick"
+            android:enabled="false"/>
 
         <CheckBox
             android:text="  Wateren"
@@ -80,7 +90,7 @@
 
         <CheckBox
             android:text="  Gebergten"
-            android:id="@+id/checkBox_gebergten"
+            android:id="@+id/checkBox_gebergtes"
             android:textSize="24sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
@@ -149,3 +159,4 @@
     </LinearLayout>
 
 </ScrollView>
+

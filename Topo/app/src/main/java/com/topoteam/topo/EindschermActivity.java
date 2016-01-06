@@ -22,25 +22,28 @@ public class EindschermActivity extends AppCompatActivity {
 
         //laat de score zien op het scherm
         TextView laatste_score = (TextView)findViewById(R.id.goed_beantwoord);
-        laatste_score.setText("Je hebt"+ score+"van de"+aantal_vragen+"goed beantwoord");
+        laatste_score.setText("Je hebt "+score+" van de "+aantal_vragen+" goed beantwoord");
 
     }
 
     public void retryButton(View view) {
-        Intent retryInt = new Intent(EindschermActivity.this, SelectionActivity.class);
-        startActivity(retryInt);
+        finish();
+        System.exit(0);
     }
 
     public void quitButton(View view) {
-        finish();
-        System.exit(0);
+        this.finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 
     public void homeButton()
     {
-        Intent home = new Intent(EindschermActivity.this, MainActivity.class);
-        startActivity(home);
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
 }

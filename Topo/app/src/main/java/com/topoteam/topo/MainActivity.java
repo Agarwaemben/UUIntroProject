@@ -79,18 +79,20 @@ public class MainActivity extends AppCompatActivity {
         Intent selectie = new Intent(this, SelectionActivity.class);
         startActivity(selectie);
     }
+    // start selectionactivity
 
     public void InfoScherm(View view)
     {
         Intent info = new Intent(this,InfoActivity.class);
         startActivity(info);
     }
+    //start infoactivity
 
     public void InstellingenScherm(View view)
     {
         Intent instellingen = new Intent(this,SettingsActivity.class);
         startActivity(instellingen);
     }
-
+    // start settingsactivity
 
 }

@@ -1,0 +1,18 @@
+Vragen genereren:
+
+In VraagGenerator.java staan alle mogelijke vragen die gesteld kunnen worden. 
+Voor elke vraag maak je een klasse die een subklasse is van de abstracte klasse VraagGenerator bovenaan in VraagGenerator.java
+Deze moet een lijst bevatten die alle soorten bevat die in die vraag passen. Dus bv stad, rivier, etc
+Daarnaast moet deze een functie genereerVraag bevatten die vanuit een element 1 vraagobject kan genereren.
+
+in TopoHelper is een functie generateQuestionList. Deze heeft als parameters 
+een lijst met alle geselecteerde soorten en een string met de tabelnaam die geselecteerd is.
+Bovenaan in TopoHelper staat een lijst vraagGenerators met alle mogelijke soorten vragen. 
+Dus voor elke vraag waar je een klasse voor aanmaakt moet in die lijst een object van die klasse komen
+
+In de generateQuestionList functie wordt per element een lijst gemaakt van vragen uit die lijst vraagGenerators 
+die het type van dat element kunnen gebruiken. Dan wordt er een random vraag uit die lijst van mogelijke vragen gekozen,
+en die maakt dan 1 vraagobject van dat element. Dat Vraag object wordt toegevoegd aan de totale lijst van vragen.
+Aan het einde is er dan een vragenlijst.
+
+Je kan de Vraagklasse en de DBElement klasse aanpassen als dat nodig is

@@ -10,101 +10,47 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
 
-
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Info"
-        android:textAllCaps="false"
         android:layout_gravity="center"
-        android:padding="10dp"
-        android:textSize="50sp"
-        android:textColor="@android:color/black"
-        android:textStyle="italic"/>
+        style="@style/style1"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/info1"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
         android:padding="15dp"
-        android:textSize="20sp"/>
+        style="@style/style5"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Oefen"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:layout_gravity="left"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="20sp"/>
+        style="@style/style4"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/info2"
         android:textColor="@android:color/white"
-        android:layout_gravity="center"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:textSize="20sp"/>
+        style="@style/style5"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Game"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:layout_gravity="start"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="20sp"/>
+        style="@style/style4"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/info3"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
         android:layout_gravity="center"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:textSize="20sp"/>
+        style="@style/style5"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Instellingen"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:layout_gravity="start"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="20sp"/>
+        style="@style/style4"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/info4"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:textSize="20sp" />
+        style="@style/style5"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -112,9 +58,9 @@
         android:text="Ga naar site"
         android:layout_gravity="end"
         android:onClick="GoToWebsite"
-        android:layout_margin="40dp"/>
-
-
+        android:layout_margin="40dp"
+        android:padding="5dp"
+        android:background="@drawable/roundbutton"/>
 
 </LinearLayout>
 </ScrollView>

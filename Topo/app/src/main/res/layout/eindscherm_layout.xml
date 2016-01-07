@@ -6,16 +6,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:padding="10dp"
         android:text="Score"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="50sp"
-        android:textStyle="italic"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        style="@style/style1"/>
 
     <Button
         android:id="@+id/retry_knop"
@@ -26,7 +20,7 @@
         android:padding="5dp"
         android:text="Retry"
         android:textAllCaps="true"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -40,7 +34,7 @@
         android:padding="5dp"
         android:text="Quit"
         android:textAllCaps="true"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -54,7 +48,7 @@
         android:padding="5dp"
         android:text="Home"
         android:textAllCaps="true"
-        android:textSize="40sp"
+        android:textSize="35sp"
 
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView"

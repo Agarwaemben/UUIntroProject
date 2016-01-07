@@ -36,7 +36,7 @@ public class OpenQuestionFragment extends VraagFragment implements QuestionFragm
         public void onClick(View v){
             // krijg de invoer in het invoerveld en check het antwoord
             boolean result = questionListener.CheckAnswer(inputfield.getText().toString());
-            questionListener.endQuestion(result);
+            questionListener.endQuestion(result, hintShown);
         }
     };
 

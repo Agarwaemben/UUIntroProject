@@ -14,7 +14,6 @@ public class EindschermActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eindscherm_layout);
 
-
         // Vind Intent, zodat we de score kunnen pakken vanuit deze intent
         Intent gameactivity = getIntent();
         int score = gameactivity.getIntExtra("score", 0);
@@ -39,8 +38,7 @@ public class EindschermActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void homeButton()
+    public void homeButton(View view)
     {
         startActivity(new Intent(this, MainActivity.class));
         finish();

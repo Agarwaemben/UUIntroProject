@@ -45,7 +45,7 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
     View.OnClickListener buttonClickHandler = new View.OnClickListener(){
         public void onClick(View v){
             boolean result = questionListener.CheckAnswer((String)v.getTag(R.id.answer_key)); // check het antwoord dat gegeven is
-            questionListener.endQuestion(result);
+            questionListener.endQuestion(result, hintShown);
         }
     };
 

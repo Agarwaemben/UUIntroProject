@@ -11,17 +11,27 @@ public class AanwijsVraagFragment extends VraagFragment implements QuestionFragm
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
+        kaartView.setOnTouchListener(onTouchListener);
         return v;
     }
 
     View.OnTouchListener onTouchListener = new View.OnTouchListener(){
         public boolean onTouch(View v, MotionEvent event){
-            float mx, my;
-            mx = event.getX();
-            my = event.getY();
+            int posX, posY;
+            posX = (int)event.getX();
+            posY = (int)event.getY();
+
+            if(event.getAction()==MotionEvent.ACTION_UP){
+                onAnswerGiven(posX, posY);
+            }
 
             return true;
         }
     };
+
+    private void onAnswerGiven(int x, int y){
+        boolean result = questionListener.CheckAnswer(x, y);
+        questionListener.endQuestion(result, hintShown);
+    }
 
 }

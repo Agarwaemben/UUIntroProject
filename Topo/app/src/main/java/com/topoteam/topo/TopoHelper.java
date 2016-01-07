@@ -5,7 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -24,6 +28,10 @@ public class TopoHelper extends SQLiteOpenHelper
     private SQLiteDatabase mDataBase;
     private final Context mContext;
     private Cursor cursor;
+
+    private List<VraagGenerator> vraagGenerators = new ArrayList<>(Arrays.asList(
+            (VraagGenerator) new MultipleChoiceVraag1())
+    );
 
     public TopoHelper(Context context)
     {
@@ -129,4 +137,38 @@ public class TopoHelper extends SQLiteOpenHelper
             return values;
     }
 
+    public List<Vraag> generateQuestionList(List<String> soort, String table){
+        List<Vraag> questionList = new ArrayList<>();
+        List<DBElement> elements = new ArrayList<>();
+
+        for(int i = 0; i < soort.size(); i++){
+            for(DBElement item : getTopodata(table, soort.get(i))){
+                elements.add(item);
+            }
+        }
+
+        for(DBElement element : elements){
+            List<VraagGenerator> mogelijkeVragen = new ArrayList<>();
+            List<DBElement> distractorElements = new ArrayList<>();
+            for(int j = 0; j < 3; j++){
+                distractorElements.add(getRandomElement(elements));
+            }
+
+            for(VraagGenerator v:vraagGenerators){
+                if (v.AllowsType(element.getType())){
+                    mogelijkeVragen.add(v);
+                }
+            }
+            Random r = new Random();
+
+            questionList.add(mogelijkeVragen.get(r.nextInt(mogelijkeVragen.size())).genereerVraag(element, distractorElements));
+        }
+
+        return questionList;
+    }
+
+    private DBElement getRandomElement(List<DBElement> elements){
+        Random r = new Random();
+        return elements.get(r.nextInt(elements.size()));
+    }
 }

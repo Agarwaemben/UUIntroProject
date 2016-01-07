@@ -96,6 +96,13 @@ public class Vraag {
     public boolean CheckAnswer(String answer){
         return (answer.equalsIgnoreCase(this.antwoord));
     }
+    public boolean CheckAnswer(int x, int y){
+        for (int i = 0; i < 10; i++){
+            if((antwoordElement.getLocatieX() == x-5+i) && (antwoordElement.getLocatieY() == y-5+i)){return true;}
+        }
+        return false;
+    }
+
 
     //returnt een lijst met geshuffeld distractors + antwoord
     public List<String> getOptions(){

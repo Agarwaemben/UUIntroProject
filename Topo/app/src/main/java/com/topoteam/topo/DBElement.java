@@ -12,11 +12,13 @@ public class DBElement{
     private String land;
     private String continent;
     private int hoofdstadvan;
+    private String type;
 
     public String getNaam(){return naam;}
     public String getProvincie(){return provincie;}
     public String getLand(){return land;}
     public String getContinent(){return continent;}
+    public String getType() {return type;}
 
     public int getLocatieX(){return locatieX;}
     public int getLocatieY(){return locatieY;}

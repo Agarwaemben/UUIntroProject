@@ -4,25 +4,59 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity implements QuestionListener {
+    SharedPreferences preferences;
+
     List<Vraag> vragenlijst; // lijst met alle vragen
     Vraag huidigeVraag; // huidige vraag
     int huidigeVraagInt, score; // huidigevraag nummer, score
     TopoHelper topoHelper; // connectie met database
     QuestionFragment huidigeFragment; // huidige vraag fragment
 
+    SoundPool sound;
+    AudioAttributes aa;
+    int maxStreams, volume;
+    int soundGoed, soundFout;
+
+    boolean soundEffects, repeatQuestion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        maxStreams = 5;
+
+        if(Build.VERSION.SDK_INT>=21) {
+            aa = new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
+            sound = new SoundPool.Builder().setMaxStreams(maxStreams).setAudioAttributes(aa).build();
+        }
+        else{
+            sound = new SoundPool(maxStreams, AudioManager.STREAM_MUSIC ,1);
+        }
+
+        soundEffects = preferences.getBoolean("pref_key_soundeffects", true);
+        soundGoed = sound.load(this, R.raw.goed, 1);
+        soundFout = sound.load(this, R.raw.fout, 1);
+        volume = 1;
+
+        repeatQuestion = preferences.getBoolean("pref_key_repeatq", false);
 
         vragenlijst = new ArrayList<>();
         //krijg vragen data
@@ -49,8 +83,15 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         updateUserInterface();
     }
 
-    public void endQuestion(boolean result){
-        if(result){score++;}
+    public void endQuestion(boolean result, boolean hintShown){
+        if(result){
+            if(soundEffects){sound.play(soundGoed, volume, volume, 1,0,1);}
+            score++;
+        } else {
+            if(soundEffects){sound.play(soundFout, volume, volume, 1,0,1);}
+            if(repeatQuestion){vragenlijst.add(huidigeVraag);
+            }
+        }
 
         huidigeVraagInt++;
         if(huidigeVraagInt < vragenlijst.size()){
@@ -156,6 +197,11 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     @Override
     public boolean isShowVraagLocatie() {
         return huidigeVraag.isShowVraagLocatie();
+    }
+
+    @Override
+    public boolean CheckAnswer(int x, int y){
+        return huidigeVraag.CheckAnswer(x,y);
     }
 
     @Override

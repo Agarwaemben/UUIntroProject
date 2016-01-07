@@ -13,6 +13,14 @@
     <string name="info2">Oefen hier de topografie van Nederland, Europa en de Wereld. Er zijn aanwijs-, multiplechoice- en open vragen.</string>
     <string name="info3">Gebruik hier alles wat je hebt geleerd bij het oefenen om een zo hoog mogelijke score te behalen!</string>
     <string name="info4">Vind hier opties voor: geluid, kleurenblindheid en meer.</string>
+    <string name="steden">Steden</string>
+    <string name="gebergtes">Gebergtes</string>
+    <string name="provincies">Provincies</string>
+    <string name="wateren">Wateren</string>
+    <string name="landen">Landen</string>
+    <string name="selectie1">Selecteer de regio die je wilt oefenen</string>
+    <string name="selectie2">Selecteer welke onderdelen je wilt oefenen</string>
+    <string name="selectie3">Selecteer hoe je wilt oefenen</string>
     
     <string-array name="regio_keuzes">
         <item>Nederland</item>

@@ -3,7 +3,9 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,17 +18,16 @@
             android:id="@+id/tAppName"
             android:text="Selectie"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="40sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            style="@style/style1"/>
 
         <TextView
             android:text="Selecteer de regio die je wilt oefenen"
             android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"/>
 
         <Spinner
             android:id="@+id/regio_selectie_spinner"
@@ -41,7 +42,8 @@
             android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"/>
+            android:enabled="false"
+            android:textColor="@android:color/white"/>
 
         <LinearLayout
             android:gravity="center|left"
@@ -49,60 +51,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <CheckBox
-            android:text="  Steden"
-            android:id="@+id/checkBox_steden"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onOnderdeelCheckBoxClick"
-            android:enabled="false"
-            android:checked="false"/>
+            <CheckBox
+                android:text="  Steden"
+                android:id="@+id/checkBox_steden"
+                android:layout_marginBottom="7dp"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:enabled="false"
+                android:checked="false"
+                style="@style/style6"/>
 
-        <CheckBox
-            android:text="  Provincies"
-            android:id="@+id/checkBox_provincies"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onOnderdeelCheckBoxClick"
-            android:enabled="false"
-            android:checked="false"/>
-        
-        <CheckBox
-            android:text="  Landen"
-            android:id="@+id/checkBox_landen"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onOnderdeelCheckBoxClick"
-            android:enabled="false"
-            android:checked="false"/>
+            <CheckBox
+                android:text="  Provincies"
+                android:id="@+id/checkBox_provincies"
+                android:layout_marginBottom="7dp"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:enabled="false"
+                android:checked="false"
+                style="@style/style6"/>
 
-        <CheckBox
-            android:text="  Wateren"
-            android:id="@+id/checkBox_wateren"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onOnderdeelCheckBoxClick"
-            android:enabled="false"
-            android:checked="false"/>
+            <CheckBox
+                android:text="  Landen"
+                android:id="@+id/checkBox_landen"
+                android:layout_marginBottom="7dp"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:enabled="false"
+                android:checked="false"
+                style="@style/style6"/>
 
-        <CheckBox
-            android:text="  Gebergtes"
-            android:id="@+id/checkBox_gebergtes"
-            android:textSize="24sp"
-            android:layout_marginBottom="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onOnderdeelCheckBoxClick"
-            android:enabled="false"
-            android:checked="false"/>
+            <CheckBox
+                android:text="  Wateren"
+                android:id="@+id/checkBox_wateren"
+                android:layout_marginBottom="7dp"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:enabled="false"
+                android:checked="false"
+                style="@style/style6"/>
+
+            <CheckBox
+                android:text="  Gebergtes"
+                android:id="@+id/checkBox_gebergtes"
+                android:layout_marginBottom="40dp"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:enabled="false"
+                android:checked="false"
+                style="@style/style6"/>
 
         </LinearLayout>
 
@@ -112,7 +104,8 @@
             android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false" />
+            android:enabled="false"
+            android:textColor="@android:color/white"/>
 
         <LinearLayout
             android:gravity="center|left"
@@ -120,35 +113,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <CheckBox
-            android:text="  Meerkeuze vragen"
-            android:id="@+id/checkBox_meerkeuzeVraag"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:onClick="onVraagCheckBoxClick"/>
+            <CheckBox
+                android:text="  Meerkeuze vragen"
+                android:id="@+id/checkBox_meerkeuzeVraag"
+                android:layout_marginBottom="7dp"
+                android:enabled="false"
+                android:onClick="onVraagCheckBoxClick"
 
-        <CheckBox
-            android:text="  Aanwijs vragen"
-            android:id="@+id/checkBox_aanwijsVraag"
-            android:textSize="24sp"
-            android:layout_marginBottom="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:onClick="onVraagCheckBoxClick"/>
+                style="@style/style6"/>
 
-        <CheckBox
-            android:text="  Invul vragen"
-            android:id="@+id/checkBox_invulVraag"
-            android:textSize="24sp"
-            android:layout_marginBottom="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:onClick="onVraagCheckBoxClick"/>
+            <CheckBox
+                android:text="  Aanwijs vragen"
+                android:id="@+id/checkBox_aanwijsVraag"
+                android:layout_marginBottom="7dp"
+                android:enabled="false"
+                android:onClick="onVraagCheckBoxClick"
+                style="@style/style6"/>
+
+            <CheckBox
+                android:text="  Invul vragen"
+                android:id="@+id/checkBox_invulVraag"
+                android:layout_marginBottom="30dp"
+                android:enabled="false"
+                android:onClick="onVraagCheckBoxClick"
+                style="@style/style6"/>
 
         </LinearLayout>
 
@@ -160,9 +148,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:enabled="false"
-            android:onClick="onStartSpelClick" />
+            android:onClick="onStartSpelClick"
+            android:textColor="@android:color/black"/>
 
     </LinearLayout>
 
 </ScrollView>
-

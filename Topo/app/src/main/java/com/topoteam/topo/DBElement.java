@@ -10,14 +10,12 @@ public class DBElement{
     private int locatieY;
     private String provincie;
     private String land;
-    private String continent;
     private int hoofdstadvan;
     private String type;
 
     public String getNaam(){return naam;}
     public String getProvincie(){return provincie;}
     public String getLand(){return land;}
-    public String getContinent(){return continent;}
     public String getType() {return type;}
 
     public int getLocatieX(){return locatieX;}
@@ -36,13 +34,12 @@ public class DBElement{
         return hoofdstadvan;
     }
 
-    public DBElement(String naam, int locatieX, int locatieY, String provincie, String land, String continent, int hoofdstadvan){
+    public DBElement(String naam, int locatieX, int locatieY, String provincie, String land, int hoofdstadvan){
         this.naam = naam;
         this.locatieX = locatieX;
         this.locatieY = locatieY;
         this.provincie = provincie;
         this.land = land;
-        this.continent = continent;
         this.hoofdstadvan = hoofdstadvan;
     }
 

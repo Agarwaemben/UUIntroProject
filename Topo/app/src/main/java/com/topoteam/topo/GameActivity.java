@@ -68,11 +68,11 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         distractorlijst2.add("Duitsland");
         distractorlijst2.add("Frankrijk");
 
-        Vraag v1 = new Vraag("Wat is de hoofdstad van Nederland", "Amsterdam", new OpenQuestionFragment(),distractorlijst1, R.drawable.nederland);
-        Vraag v2 = new Vraag("Van welk land is Amsterdam hoofdstad", "Nederland", new MultipleChoiceFragment(), distractorlijst2, R.drawable.nederland);
+        //Vraag v1 = new Vraag("Wat is de hoofdstad van Nederland", "Amsterdam", new OpenQuestionFragment(),distractorlijst1, R.drawable.nederland);
+        //Vraag v2 = new Vraag("Van welk land is Amsterdam hoofdstad", "Nederland", new MultipleChoiceFragment(), distractorlijst2, R.drawable.nederland);
 
-        vragenlijst.add(v1);
-        vragenlijst.add(v2);
+        //vragenlijst.add(v1);
+        // vragenlijst.add(v2);
 
         //initialiseer variabelen
         huidigeVraagInt = 0;

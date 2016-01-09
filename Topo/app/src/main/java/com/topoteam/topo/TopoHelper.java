@@ -30,7 +30,9 @@ public class TopoHelper extends SQLiteOpenHelper
     private Cursor cursor;
 
     private List<VraagGenerator> vraagGenerators = new ArrayList<>(Arrays.asList(
-            (VraagGenerator) new MultipleChoiceVraag1())
+            new MCVNederland(), new AVNederland(), new OVNederland(),new MCVHoofdstadNederland(), new AVHoofdstadNederland(), new OVHoofdstadNederland(),
+            new MCVEuropa(), new MCVHoofdstadEuropa(), new AVEuropa(), new AVHoofdstadEuropa(), new OVEuropa(), new OVHoofdstadEuropa(),
+            new MCVWereld(), new MCVHoofdstadWereld(), new AVWereld(), new AVHoofdstadWereld(), new OVWereld(), new OVHoofdstadWereld())
     );
 
     public TopoHelper(Context context)
@@ -126,10 +128,9 @@ public class TopoHelper extends SQLiteOpenHelper
             if(cursor.moveToFirst()){
                     do {
                         values.add(new DBElement(cursor.getString(cursor
-                                .getColumnIndex("Plaats")), cursor.getInt(cursor.getColumnIndex("locatieX")), cursor.getInt(cursor.getColumnIndex("locatieY")),cursor.getString(cursor
+                                .getColumnIndex("Plaats")), cursor.getInt(cursor.getColumnIndex("x")), cursor.getInt(cursor.getColumnIndex("y")),cursor.getString(cursor
                                 .getColumnIndex("Provincie")),cursor.getString(cursor
-                                .getColumnIndex("Land")),cursor.getString(cursor
-                                .getColumnIndex("continent")),cursor.getInt(cursor
+                                .getColumnIndex("Land")),cursor.getInt(cursor
                                 .getColumnIndex("Hoofdstad"))));
                 } while (cursor.moveToNext());
 

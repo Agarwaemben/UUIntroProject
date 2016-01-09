@@ -13,6 +13,7 @@ public class Vraag {
     private List<DBElement> distractorElementen;
 
     private int kaart;
+    private Boolean TekenAlleLocaties;
     private boolean showVraagLocatie;
     private boolean showAntwoordLocatie;
     private boolean showDistractorLocatie;
@@ -84,12 +85,13 @@ public class Vraag {
     }
 
     //constructor
-    public Vraag(String vraag, String antwoord, QuestionFragment vraagtypeFragment, List<String> distractors, int kaart){
+    public Vraag(String vraag, String antwoord, QuestionFragment vraagtypeFragment, List<String> distractors, int kaart, Boolean TekenAlleLocaties){
         this.vraag = vraag;
         this.antwoord = antwoord;
         this.vraagtypeFragment = vraagtypeFragment;
         this.distractors = distractors;
         this.kaart = kaart;
+        this.TekenAlleLocaties = TekenAlleLocaties;
     }
 
     //checkt of het gegeven antwoord overeenkomt met het juiste antwoord

@@ -21,6 +21,7 @@ public class SelectionActivity extends Activity {
             checkBoxMeerkVraag, checkBoxAanwVraag, checkBoxInvulVraag;
     Button buttonStartSpel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,9 +175,9 @@ public class SelectionActivity extends Activity {
         checkBoxAanwVraag.setChecked(false);
         checkBoxInvulVraag.setChecked(false);
 
-        checkBoxMeerkVraag.setEnabled(false);
-        checkBoxAanwVraag.setEnabled(false);
-        checkBoxInvulVraag.setEnabled(false);
+        checkBoxMeerkVraag.setEnabled(true);
+        checkBoxAanwVraag.setEnabled(true);
+        checkBoxInvulVraag.setEnabled(true);
     }
 
     //Methode om door te gaan naar het oefenspel

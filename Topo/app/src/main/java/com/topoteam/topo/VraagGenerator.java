@@ -1,5 +1,6 @@
 package com.topoteam.topo;
 
+import android.content.res.Resources;
 import android.view.ViewDebug;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ class OVNederland extends VraagGenerator {
         return new Vraag("Welk(e) stad/water/gebied/provinvie is getekend?", dbElement.getNaam(), new OpenQuestionFragment(), null, R.drawable.nederland, false);
     }
 }
-
+/*
 class MCVHoofdstadNederland extends VraagGenerator{
     private List<String> types = new ArrayList<String>(Arrays.asList("Stad"));
 
@@ -213,4 +214,4 @@ class OVHoofdstadWereld extends VraagGenerator {
     public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements) {
         return new Vraag("Wat is de Hoofdstad van "+dbElement.getLand()+"?", dbElement.getNaam(), new OpenQuestionFragment(), null, R.drawable.wereld, false);
     }
-}
+}*/

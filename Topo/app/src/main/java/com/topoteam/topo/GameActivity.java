@@ -17,12 +17,13 @@ import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class GameActivity extends AppCompatActivity implements QuestionListener {
     SharedPreferences preferences;
 
     List<Vraag> vragenlijst; // lijst met alle vragen
-    Vraag huidigeVraag; // huidige vraag
+    Vraag huidigeVraag; // huidige vraag`
     int huidigeVraagInt, score; // huidigevraag nummer, score
     TopoHelper topoHelper; // connectie met database
     QuestionFragment huidigeFragment; // huidige vraag fragment
@@ -60,19 +61,10 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
 
         vragenlijst = new ArrayList<>();
         //krijg vragen data
-        List<String> distractorlijst1 = new ArrayList<>();
-        List<String> distractorlijst2 = new ArrayList<>();
+        List<String> soort = new ArrayList<>();
+        soort.add("Stad");
+        vragenlijst = topoHelper.generateQuestionList(soort, "Kaart_Nederland");
 
-        distractorlijst1.add("Rotterdam");
-        distractorlijst1.add("Den Haag");
-        distractorlijst2.add("Duitsland");
-        distractorlijst2.add("Frankrijk");
-
-        //Vraag v1 = new Vraag("Wat is de hoofdstad van Nederland", "Amsterdam", new OpenQuestionFragment(),distractorlijst1, R.drawable.nederland);
-        //Vraag v2 = new Vraag("Van welk land is Amsterdam hoofdstad", "Nederland", new MultipleChoiceFragment(), distractorlijst2, R.drawable.nederland);
-
-        //vragenlijst.add(v1);
-        // vragenlijst.add(v2);
 
         //initialiseer variabelen
         huidigeVraagInt = 0;

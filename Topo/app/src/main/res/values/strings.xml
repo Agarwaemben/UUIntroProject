@@ -21,7 +21,19 @@
     <string name="selectie1">Selecteer de regio die je wilt oefenen</string>
     <string name="selectie2">Selecteer welke onderdelen je wilt oefenen</string>
     <string name="selectie3">Selecteer hoe je wilt oefenen</string>
-    
+    <string name="Regio">Regio</string>
+    <string name="Steden">Steden</string>
+    <string name="Provincies">Provincies</string>
+    <string name="Landen">Landen</string>
+    <string name="Wateren">Wateren</string>
+    <string name="Gebergtes">Gebergtes</string>
+    <string name="Meerkeuze">Meerkeuze</string>
+    <string name="Aanwijs">Aanwijs</string>
+    <string name="Invul">Invul</string>
+    <string name="Nederland">Nederland</string>
+    <string name="Score">score</string>
+    <string name="Aantal_vragen">aantal_vragen</string>
+
     <string-array name="regio_keuzes">
         <item>Nederland</item>
         <item>Europa</item>

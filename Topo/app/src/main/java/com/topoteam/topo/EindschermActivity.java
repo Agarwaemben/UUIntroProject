@@ -16,8 +16,8 @@ public class EindschermActivity extends AppCompatActivity {
 
         // Vind Intent, zodat we de score kunnen pakken vanuit deze intent
         Intent gameactivity = getIntent();
-        int score = gameactivity.getIntExtra("score", 0);
-        int aantal_vragen = gameactivity.getIntExtra("aantal_vragen", 1);
+        int score = gameactivity.getIntExtra(getString(R.string.Score), 0);
+        int aantal_vragen = gameactivity.getIntExtra(getString(R.string.Aantal_vragen), 1);
 
         //laat de score zien op het scherm
         TextView laatste_score = (TextView)findViewById(R.id.goed_beantwoord);

@@ -1,5 +1,7 @@
 package com.topoteam.topo;
 
+import android.app.Fragment;
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.ViewDebug;
 
@@ -8,59 +10,88 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+// abstracte klasse voor vraaggenerators
 abstract class VraagGenerator{
-    private List<String> types;
+    // lijst van geaccepteerde types en vraagtype
+    protected List<Integer> types;
+    protected int vraagtype;
 
+    // standaard constructor
     public VraagGenerator(){
-
+        //
     }
 
-    public boolean AllowsType(String type){
-        for (String t:types
+    // functie om te bepalen of een bepaald type werkt met deze vraag
+    public boolean AllowsType(Context c, String type){
+        for (Integer t:types
              ) {
-            if (t.equals(type)){
+            if (c.getResources().getString(t).equalsIgnoreCase(type)){
                 return true;
             }
         }
-
         return false;
     }
 
-    public abstract Vraag genereerVraag(DBElement dbElement, List<DBElement> otherElements);
+    // functie om te bepalen of een bepaald vraagtype werkt met deze vraag
+    public boolean isVraagType(Context c, List<String> type){
+        for(String s:type){
+            if(s.equalsIgnoreCase(c.getResources().getString(vraagtype))){return true;}
+        }
+        return false;
+    }
+
+    // functie die vanuit een dbelement een vraagobject genereert
+    public abstract Vraag genereerVraag(DBElement dbElement, List<DBElement> otherElements, int kaart);
 }
 //MCV = Multiple Choice Vraag
 //AV = Aanwijs Vraag
 //OV = Open Vraag
 class MCVNederland extends VraagGenerator{
-    private List<String> types = new ArrayList<String>(Arrays.asList("Stad", "Water", "Gebied", "Provincie"));
+    // constructor die de types set
+    public MCVNederland(){
+        types = new ArrayList<>(Arrays.asList(R.string.Steden, R.string.Wateren, R.string.Gebergtes, R.string.Provincies));
+        vraagtype = R.string.Meerkeuze;
+    }
 
-    public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements) {
+    // genereer een vraag
+    public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements, int kaart) {
         List<String> distractors = new ArrayList<>();
         for (DBElement e:distractorElements){distractors.add(e.getNaam());}
 
-        return new Vraag("Welk(e) stad/water/gebied/provinvie is getekend?", dbElement.getNaam(), new MultipleChoiceFragment(), distractors, R.drawable.nederland, false);
+        Vraag v = new Vraag("Welk(e) " + dbElement.getType().toLowerCase() + " is getekend?", dbElement.getNaam(), getNewFragment(), distractors, kaart, dbElement, distractorElements);
+        v.setShowElementLocatie(true);
+        return v;
+    }
+
+    protected VraagFragment getNewFragment(){
+        return new MultipleChoiceFragment();
     }
 }
 
 class AVNederland extends VraagGenerator {
-    private List<String> types = new ArrayList<String>(Arrays.asList("Stad", "Water", "Gebied", "Provincie"));
+    public AVNederland(){
+        types = new ArrayList<>(Arrays.asList(R.string.Steden, R.string.Wateren, R.string.Gebergtes, R.string.Provincies));
+        vraagtype = R.string.Aanwijs;
+    }
 
-    public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements) {
-        List<Integer> distractors = new ArrayList<>();
-        for (DBElement e : distractorElements) {distractors.add(e.getLocatieX(),e.getLocatieY());
-        }
-
-        return new Vraag("Waar ligt"+dbElement.getNaam()+"?", Integer.toString(dbElement.getLocatieX())+" "+Integer.toString(dbElement.getLocatieY()), new AanwijsVraagFragment(), null, R.drawable.nederland, true);
+    public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements, int kaart) {
+        Vraag v = new Vraag(String.format("Waar ligt %s?", dbElement.getNaam()), dbElement.getLocatieX(), dbElement.getLocatieY(), new AanwijsVraagFragment(), null, kaart, dbElement, distractorElements);
+        return v;
     }
 }
 
-class OVNederland extends VraagGenerator {
-    private List<String> types = new ArrayList<String>(Arrays.asList("Stad", "Water", "Gebied", "Provincie"));
+class OVNederland extends MCVNederland {
+    public OVNederland(){
+        super();
+        vraagtype = R.string.Invul;
+    }
 
-    public Vraag genereerVraag(DBElement dbElement, List<DBElement> distractorElements) {
-        return new Vraag("Welk(e) stad/water/gebied/provinvie is getekend?", dbElement.getNaam(), new OpenQuestionFragment(), null, R.drawable.nederland, false);
+    @Override
+    protected VraagFragment getNewFragment(){
+        return new OpenQuestionFragment();
     }
 }
+
 /*
 class MCVHoofdstadNederland extends VraagGenerator{
     private List<String> types = new ArrayList<String>(Arrays.asList("Stad"));

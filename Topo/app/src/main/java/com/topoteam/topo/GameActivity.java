@@ -5,45 +5,59 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.SQLException;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.preference.PreferenceManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class GameActivity extends AppCompatActivity implements QuestionListener {
-    SharedPreferences preferences;
+    SharedPreferences preferences; // global app settings
 
     List<Vraag> vragenlijst; // lijst met alle vragen
-    Vraag huidigeVraag; // huidige vraag`
+    Vraag huidigeVraag; // huidige vraag
     int huidigeVraagInt, score; // huidigevraag nummer, score
     TopoHelper topoHelper; // connectie met database
     QuestionFragment huidigeFragment; // huidige vraag fragment
 
+    // variabelen voor de connectie met selectionactivity
+    String regio;
+    List<String> types, vraagtypes;
+
+    // variabelen om geluid mogelijk te maken
     SoundPool sound;
     AudioAttributes aa;
     int maxStreams, volume;
+
+    // referenties naar de geluidsbestanden
     int soundGoed, soundFout;
 
+    // settings voor het geluid
     boolean soundEffects, repeatQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_layout);
+        setContentView(R.layout.game_layout); // set gamelayout
 
+        // get de preference settings
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        // zet de maximaal aantal geluiden dat tegelijkertijd kan spelen
         maxStreams = 5;
 
+        // initieer soundpool object
         if(Build.VERSION.SDK_INT>=21) {
             aa = new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
             sound = new SoundPool.Builder().setMaxStreams(maxStreams).setAudioAttributes(aa).build();
@@ -52,19 +66,57 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
             sound = new SoundPool(maxStreams, AudioManager.STREAM_MUSIC ,1);
         }
 
+        // get de setting voor geluidseffecten
         soundEffects = preferences.getBoolean("pref_key_soundeffects", true);
+
+        // laad de geluidseffecten in het geheugen
         soundGoed = sound.load(this, R.raw.goed, 1);
         soundFout = sound.load(this, R.raw.fout, 1);
         volume = 1;
 
+        // get de setting voor het herhalen van foute vragen
         repeatQuestion = preferences.getBoolean("pref_key_repeatq", false);
 
-        vragenlijst = new ArrayList<>();
-        //krijg vragen data
-        List<String> soort = new ArrayList<>();
-        soort.add("Stad");
-        vragenlijst = topoHelper.generateQuestionList(soort, "Kaart_Nederland");
+        // krijg de intent van de selectionactivity
+        Intent i = getIntent();
 
+        // creer lijsten voor de geselecteerde types
+        types = new ArrayList<>();
+        vraagtypes = new ArrayList<>();
+
+        // get de regio
+        regio = i.getStringExtra(getString(R.string.Regio));
+
+        // get alle selecties voor soorten
+        if(i.getBooleanExtra(getString(R.string.Steden), false)){types.add(getString(R.string.Steden));}
+        if(i.getBooleanExtra(getString(R.string.Provincies), false)){types.add(getString(R.string.Provincies));}
+        if(i.getBooleanExtra(getString(R.string.Wateren), false)){types.add(getString(R.string.Wateren));}
+        if(i.getBooleanExtra(getString(R.string.Landen), false)){types.add(getString(R.string.Landen));}
+        if(i.getBooleanExtra(getString(R.string.Gebergtes), false)){types.add(getString(R.string.Gebergtes));}
+
+        // get alle selecties voor vraagsoorten
+        if(i.getBooleanExtra(getString(R.string.Meerkeuze), false)){vraagtypes.add(getString(R.string.Meerkeuze));}
+        if(i.getBooleanExtra(getString(R.string.Aanwijs), false)){vraagtypes.add(getString(R.string.Aanwijs));}
+        if(i.getBooleanExtra(getString(R.string.Invul), false)){vraagtypes.add(getString(R.string.Invul));}
+
+        // creer de vragenlijst
+
+        // creer database object
+        topoHelper = new TopoHelper(this);
+
+        try {
+            topoHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
+        try {
+            topoHelper.openDataBase();
+        } catch (SQLException sqle) {
+            throw sqle;
+        }
+
+        // genereer vragenlijst
+        vragenlijst = topoHelper.generateQuestionList(types,vraagtypes,regio);
 
         //initialiseer variabelen
         huidigeVraagInt = 0;
@@ -76,31 +128,39 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     }
 
     public void endQuestion(boolean result, boolean hintShown){
+        // als de vraag goed beantwoord is
         if(result){
+            // geluidseffect
             if(soundEffects){sound.play(soundGoed, volume, volume, 1,0,1);}
+            // score omhoog
             score++;
         } else {
-            if(soundEffects){sound.play(soundFout, volume, volume, 1,0,1);}
-            if(repeatQuestion){vragenlijst.add(huidigeVraag);
+            // als de vraag fout is
+            if(soundEffects){sound.play(soundFout, volume, volume, 1,0,1);} // geluidseffect
+            if(repeatQuestion){vragenlijst.add(huidigeVraag); // herhaal de vraag
             }
         }
 
-        huidigeVraagInt++;
-        if(huidigeVraagInt < vragenlijst.size()){
-            huidigeVraag = vragenlijst.get(huidigeVraagInt);
-            updateUserInterface();
+        huidigeVraagInt++; // ga naar de volgende vraag
+        if(huidigeVraagInt < vragenlijst.size()){ // als er nog een volgende vraag is
+            huidigeVraag = vragenlijst.get(huidigeVraagInt); // zet de huidigevraag naar de nieuwe vraag
+            updateUserInterface(); // update de user interface
         } else{
-            System.out.println("endgame");
+            // als er geen nieuwe vragen meer zijn, beeindig het spel
             endGame();
         }
     }
 
+    // functie om het spel te beeindigen
     private void endGame(){
+        // creer intent voor eindscherm activity
         Intent intent = new Intent(this, EindschermActivity.class);
-        //geeft extra informatie mee aan de volgende intent
-        intent.putExtra(getString(R.string.Score), score);
-        intent.putExtra(getString(R.string.Aantal_vragen),vragenlijst.size());
 
+        //geeft extra informatie mee aan de intent
+        intent.putExtra(getString(R.string.Score), score);
+        intent.putExtra(getString(R.string.Aantal_vragen), vragenlijst.size());
+
+        // start de eindschermactivity
         startActivity(intent);
     }
 
@@ -112,12 +172,24 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         huidigeFragment = huidigeVraag.getVraagtypeFragment(); // get nieuwe fragment
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); // verwijder alle oude fragmenten
         fragmentTransaction.replace(fragment_container.getId(), (Fragment) huidigeFragment); //vervang het oude fragment met het nieuwe fragment
         fragmentTransaction.commit(); // voer de verandering uit
 
         //update de scorelabels
         setTextViewText(R.id.textview_Score, Integer.toString(score)); // update scorelabel
         setTextViewText(R.id.textview_Vraagcounter, "Vraag: " + Integer.toString(huidigeVraagInt + 1) + "/" + Integer.toString(vragenlijst.size())); // update vraagcounterlabel
+
+        //update de kaart label
+        setTextViewText(R.id.textview_Settings, "Kaart: " + regio);
+
+        // event handler voor de hintknop
+        Button b = (Button)findViewById(R.id.button_Hint);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                huidigeFragment.onShowHint();
+            }
+        });
     }
 
     // methode om tekst van textview te setten
@@ -126,6 +198,8 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         v.setText(text);
     }
 
+
+    //getters en setters voor de vraagobjecten
     @Override
     public boolean CheckAnswer(String answer) {
         return huidigeVraag.CheckAnswer(answer);
@@ -157,21 +231,6 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     }
 
     @Override
-    public DBElement getAntwoordElement() {
-        return huidigeVraag.getAntwoordElement();
-    }
-
-    @Override
-    public DBElement getVraagElement() {
-        return huidigeVraag.getVraagElement();
-    }
-
-    @Override
-    public boolean isShowAntwoordLocatie() {
-        return huidigeVraag.isShowAntwoordLocatie();
-    }
-
-    @Override
     public boolean isShowDistractorLocatie() {
         return huidigeVraag.isShowDistractorLocatie();
     }
@@ -187,17 +246,22 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     }
 
     @Override
-    public boolean isShowVraagLocatie() {
-        return huidigeVraag.isShowVraagLocatie();
-    }
-
-    @Override
     public boolean CheckAnswer(int x, int y){
-        return huidigeVraag.CheckAnswer(x,y);
+        return huidigeVraag.CheckAnswer(x, y);
     }
 
     @Override
     public List<DBElement> getDistractorElementen() {
         return huidigeVraag.getDistractorElementen();
+    }
+
+    @Override
+    public DBElement getElement() {
+        return huidigeVraag.getElement();
+    }
+
+    @Override
+    public boolean isShowElementLocation() {
+        return huidigeVraag.isShowElementLocatie();
     }
 }

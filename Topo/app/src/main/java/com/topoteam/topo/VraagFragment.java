@@ -2,14 +2,21 @@ package com.topoteam.topo;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,9 +29,10 @@ public class VraagFragment extends Fragment implements QuestionFragment{
     LinearLayout.LayoutParams l_layout_params; // layoutparams
     ImageView kaartView; // kaart
     TextView vraagTextView;
-    DBElement vraagElement;
-    DBElement antwoordElement;
+    DBElement element;
     List<DBElement> distractorElementen;
+    int originalWidth, originalHeight, scaledWidth, scaledHeight, imageBoundsLeft, imageBoundsRight;
+    double scaleFactorX, scaleFactorY;
     boolean hintShown = false; boolean showHint = false; // hintshown
 
     @Override
@@ -40,17 +48,23 @@ public class VraagFragment extends Fragment implements QuestionFragment{
 
         // set de kaart
         kaartView = (ImageView) v.findViewById(R.id.kaart);
-        kaartView.setImageBitmap(BitmapConverter.decodeSampledBitmapFromResource(getResources(), questionListener.getKaart(), 300, 300));
+        Bitmap b = BitmapConverter.decodeSampledBitmapFromResource(getResources(), questionListener.getKaart(), 300, 300);
+        kaartView.setImageBitmap(b);
 
-        vraagElement = questionListener.getVraagElement();
-        antwoordElement = questionListener.getAntwoordElement();
+        // bereken de scalefactors van de imageview
+        setScaleFactors(b);
+
+        // get de elementen
+        element = questionListener.getElement();
         distractorElementen = questionListener.getDistractorElementen();
 
+        // teken de user interface
         updateUserInterface();
 
         return v;
     }
 
+    // implementeer de connectie met de gameactivity
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -63,28 +77,37 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         }
     }
 
+
+    // functie die wordt uitgevoerd als het fragment verwijderd wordt
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+
+        // ruim de bitmap op om geheugen vrij te maken
+        Bitmap bitmap = ((BitmapDrawable)kaartView.getDrawable()).getBitmap();
+        bitmap.recycle();
+    }
+
+    // teken de userinterface
     public void updateUserInterface(){
+        // krijg de bitmap van de kaart construeer een canvas
         Bitmap bitmap = ((BitmapDrawable)kaartView.getDrawable()).getBitmap();
         Canvas c = new Canvas(bitmap);
 
-        if (questionListener.isShowVraagLocatie()){
-            drawElement(c, vraagElement.getLocatieX(), vraagElement.getLocatieY());
+        // teken de elementen die nodig zijn
+        if (questionListener.isShowElementLocation()){
+            drawElement(c, element.getLocatieX(), element.getLocatieY());
             if (questionListener.isShowName()){
-                drawText(c, vraagElement.getLocatieX()+20, vraagElement.getLocatieY()+20, vraagElement.getNaam());
+                drawText(c, element.getLocatieX()+20, element.getLocatieY()+20, element.getNaam());
             }
         }
 
-        if (questionListener.isShowAntwoordLocatie()){
-            drawElement(c, antwoordElement.getLocatieX(), antwoordElement.getLocatieY());
-            if (questionListener.isShowName()){
-                drawText(c, antwoordElement.getLocatieX() + 20, antwoordElement.getLocatieY() + 20, antwoordElement.getNaam());
-            }
-        }
-
+        // laat de hint zien als dat nodig is
         if(showHint) {
-            c.drawRect(10, 10, 30, 30, new Paint());
+            //
         }
 
+        // set de bewerkte bitmap
         kaartView.setImageBitmap(bitmap);
     }
 
@@ -94,11 +117,53 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         updateUserInterface(); //update de interface met de nieuwe waarde van showhint
     }
 
+    // functie om een element te tekenen
     protected void drawElement(Canvas c, int x, int y){
-        c.drawRect(x - 5, y - 5, x + 5, y + 5, new Paint());
+        // bereken de geschaalde positie van x en y
+        int scaledX = (int)(x/scaleFactorX);
+        int scaledY = (int)(y/scaleFactorY);
+
+        // teken het element
+        c.drawRect(scaledX - 10, scaledY -10 , scaledX + 10, scaledY + 10, new Paint());
     }
 
     protected void drawText(Canvas c, int x, int y, String text){
-        c.drawText(text, x, y, new Paint());
+        scaleFactorX = originalWidth / scaledWidth;
+        scaleFactorY = originalHeight / scaledHeight;
+
+        int scaledX = (int)(x/scaleFactorX);
+        int scaledY = (int)(y/scaleFactorY);
+
+        c.drawText(text, scaledX, scaledY, new Paint());
+    }
+
+    // bereken de originele breedte van de kaart
+    public int getOriginalWidth(){
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(),
+                questionListener.getKaart(), o);
+        return bmp.getWidth();
+    }
+
+    // bereken de originele hoogte van de kaart
+    public int getOriginalHeight(){
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(),
+                questionListener.getKaart(), o);
+        return bmp.getHeight();
+    }
+
+    // bereken de scalefactors van de bitmap
+    protected void setScaleFactors(Bitmap scaledBitmap) {
+        originalWidth = getOriginalWidth();
+        originalHeight = getOriginalHeight();
+
+        int scaledHeight = scaledBitmap.getHeight();
+        int scaledWidth = scaledBitmap.getWidth();
+
+        scaleFactorX = (double) originalWidth / scaledWidth;
+        scaleFactorY = (double) originalHeight / scaledHeight;
     }
 }

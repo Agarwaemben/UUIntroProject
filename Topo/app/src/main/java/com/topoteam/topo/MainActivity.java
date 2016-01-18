@@ -34,19 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        //Database checken, als er geen is deze aanmaken, als er wel een is deze openen
-        TopoHelper myDbHelper = new TopoHelper(this);
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
-        try {
-            myDbHelper.openDataBase();
-        } catch (SQLException sqle) {
-            throw sqle;
-        }
     }
 
     //Optionsmenu verwijderd, omdat we eigen 'Instellingen' knop hebben.

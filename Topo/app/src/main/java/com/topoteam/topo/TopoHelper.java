@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -47,6 +48,7 @@ public class TopoHelper extends SQLiteOpenHelper
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         }
         this.mContext = context;
+        openDataBase();
     }
 
     public void createDataBase() throws IOException
@@ -54,7 +56,7 @@ public class TopoHelper extends SQLiteOpenHelper
         //Als er geen database is --> lege database aanmaken en de inhoud van TopoBase.db hierin kopieren (uit de assets folder).
 
         boolean mDataBaseExist = checkDataBase();
-        if(!mDataBaseExist)
+        if(mDataBaseExist)
         {
             this.getReadableDatabase();
             this.close();
@@ -120,54 +122,100 @@ public class TopoHelper extends SQLiteOpenHelper
 
     }
 
+    // methode om een lijst met geselecteerde elementen uit de database te returnen
     public ArrayList<DBElement> getTopodata(String TABLE, String Soort) {
-        String[] SelectionArgs = new String[] {"'" + Soort + "'"};
+        // creer lege lijst met elementen
         ArrayList<DBElement> values = new ArrayList<DBElement>();
-        String query = "SELECT * FROM "+ TABLE + " WHERE Soort = ? ORDER BY RANDOM() LIMIT 1";
-        cursor = mDataBase.rawQuery(query, SelectionArgs);
-            if(cursor.moveToFirst()){
-                    do {
-                        values.add(new DBElement(cursor.getString(cursor
-                                .getColumnIndex("Plaats")), cursor.getInt(cursor.getColumnIndex("x")), cursor.getInt(cursor.getColumnIndex("y")),cursor.getString(cursor
-                                .getColumnIndex("Provincie")),cursor.getString(cursor
-                                .getColumnIndex("Land")),cursor.getInt(cursor
-                                .getColumnIndex("Hoofdstad"))));
-                } while (cursor.moveToNext());
+        String query = "SELECT * FROM "+ TABLE + " WHERE Soort = '" + Soort + "'"; // creer query
+        System.out.println("QUERY: " + query);
 
-            }
-            return values;
+        cursor = mDataBase.rawQuery(query, null); // voer de query uit en sla het op in een cursor
+
+        int cindex_Plaats, cindex_X, cindex_Y, cindex_Provincie, cindex_Land, cindex_Hoofdstad, cindex_Type; // indexes voor columns
+        cursor.moveToFirst(); // ga naar de eerste rij
+
+        // krijg alle indexes van de columns
+        cindex_Plaats = cursor.getColumnIndex("Plaats");
+        cindex_Provincie = cursor.getColumnIndex("Provincie");
+        cindex_Hoofdstad = cursor.getColumnIndex("Hoofdstad");
+        cindex_Type = cursor.getColumnIndex("Soort");
+        cindex_X = cursor.getColumnIndex("x");
+        cindex_Y = cursor.getColumnIndex("y");
+
+        // main loop
+        // loop over alle entries
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // creer een nieuw element met de informatie uit 1 entry en voeg het toe aan de lijst
+            values.add(new DBElement(cursor.getString(cindex_Plaats), cursor.getInt(cindex_X), cursor.getInt(cindex_Y), cursor.getString(cindex_Provincie),
+                    "Nederland" , cursor.getInt(cindex_Hoofdstad), cursor.getString(cindex_Type)));
+        }
+
+        // return de lijst
+        return values;
     }
 
-    public List<Vraag> generateQuestionList(List<String> soort, String table){
+    // functie om een volledige vragenlijst te genereren
+    public List<Vraag> generateQuestionList(List<String> soort, List<String> soort_Vraag,String table){
+        // creer vragenlijst
         List<Vraag> questionList = new ArrayList<>();
+
+        // creer elementen lijst
         List<DBElement> elements = new ArrayList<>();
 
+        // initialiseer randomiser
+        Random r = new Random();
+        int kaart = R.drawable.nederland;
+
+        // loop door de geselecteerde soorten
         for(int i = 0; i < soort.size(); i++){
-            for(DBElement item : getTopodata(table, soort.get(i))){
+            // get de elementenlijst voor die soort
+            List<DBElement> rawinfo = getTopodata(table, soort.get(i));
+
+            // voeg de elementen toe aan de volledige elementenlijst
+            for(DBElement item : rawinfo){
                 elements.add(item);
             }
         }
 
+        System.out.println("ELEMENTENSIZE = " + elements.size());
+
+        // voor elk element in de elementenlijst
         for(DBElement element : elements){
+            // creer lijst voor mogelijke vraaggenerators
             List<VraagGenerator> mogelijkeVragen = new ArrayList<>();
+            // creer lijst voor distractorelementen
             List<DBElement> distractorElements = new ArrayList<>();
+
+            // selecteeer 3 distractorelementen
             for(int j = 0; j < 3; j++){
+                // krijg random element
                 distractorElements.add(getRandomElement(elements));
             }
 
-            for(VraagGenerator v:vraagGenerators){
-                if (v.AllowsType(element.getType())){
+            // loop door alle vraaggenerators
+            for(VraagGenerator v:vraagGenerators) {
+                // check voor geschiktheid voor de geselecteerde opties
+                System.out.println("TYPECHECK: " + element.getType() + v.AllowsType(mContext, element.getType()) + v.isVraagType(mContext, soort_Vraag));
+
+                if (v.AllowsType(mContext, element.getType()) && v.isVraagType(mContext, soort_Vraag)) {
+                    // voeg vraaggenerator toe aan mogelijke vraaggenerators
                     mogelijkeVragen.add(v);
                 }
             }
-            Random r = new Random();
 
-            questionList.add(mogelijkeVragen.get(r.nextInt(mogelijkeVragen.size())).genereerVraag(element, distractorElements));
+            // genereer een vraag met 1 van de mogelijke vragen
+            // voeg de vraag toe aan de vragenlijst
+            questionList.add(mogelijkeVragen.get(r.nextInt(mogelijkeVragen.size())).genereerVraag(element, distractorElements, kaart));
         }
 
+        // shuffle de vragenlijst
+        Collections.shuffle(questionList);
+
+        // return de vragenlijst
         return questionList;
     }
 
+    // methode om een random element uit een elementenlijst te returnen
     private DBElement getRandomElement(List<DBElement> elements){
         Random r = new Random();
         return elements.get(r.nextInt(elements.size()));

@@ -12,12 +12,10 @@ public interface QuestionListener {
     List<String> getOptions();
     int getKaart();
     void endQuestion(boolean result, boolean hintShown);
-    boolean isShowVraagLocatie();
-    boolean isShowAntwoordLocatie();
     boolean isShowName();
+    boolean isShowElementLocation();
     boolean isShowDistractorLocatie();
     boolean isShowLetter();
-    DBElement getVraagElement();
-    DBElement getAntwoordElement();
+    DBElement getElement();
     List<DBElement> getDistractorElementen();
 }

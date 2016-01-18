@@ -22,10 +22,10 @@
     <string name="selectie2">Selecteer welke onderdelen je wilt oefenen</string>
     <string name="selectie3">Selecteer hoe je wilt oefenen</string>
     <string name="Regio">Regio</string>
-    <string name="Steden">Steden</string>
-    <string name="Provincies">Provincies</string>
-    <string name="Landen">Landen</string>
-    <string name="Wateren">Wateren</string>
+    <string name="Steden">Stad</string>
+    <string name="Provincies">Provincie</string>
+    <string name="Landen">Land</string>
+    <string name="Wateren">Water</string>
     <string name="Gebergtes">Gebergtes</string>
     <string name="Meerkeuze">Meerkeuze</string>
     <string name="Aanwijs">Aanwijs</string>

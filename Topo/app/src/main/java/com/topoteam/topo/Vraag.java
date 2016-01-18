@@ -8,14 +8,12 @@ import java.util.List;
 public class Vraag {
     private String vraag; //string met de vraag
     private String antwoord; // string met het antwoord
-    private DBElement vraagElement; //element die alle info bevat over het element in de vraag
-    private DBElement antwoordElement; // element die alle info bevat over het element in het antwoord
+    private int antwoordX, antwoordY;
+    private DBElement element; //element die alle info bevat over het element in de vraag
     private List<DBElement> distractorElementen;
 
     private int kaart;
-    private Boolean TekenAlleLocaties;
-    private boolean showVraagLocatie;
-    private boolean showAntwoordLocatie;
+    private boolean showElementLocatie;
     private boolean showDistractorLocatie;
     private boolean showName;
     private boolean showLetter;
@@ -26,26 +24,16 @@ public class Vraag {
     //getters en setters
     public String getVraag(){return vraag;}
     public String getAntwoord(){return antwoord;}
-    public DBElement getVraagInfo(){return vraagElement;}
-    public DBElement getAntwoordInfo(){return antwoordElement;}
     public List<String> getDistractors(){return distractors;}
     public QuestionFragment getVraagtypeFragment(){return vraagtypeFragment;}
     public int getKaart(){return kaart;}
 
-    public boolean isShowVraagLocatie() {
-        return showVraagLocatie;
+    public boolean isShowElementLocatie() {
+        return showElementLocatie;
     }
 
-    public void setShowVraagLocatie(boolean showVraagLocatie) {
-        this.showVraagLocatie = showVraagLocatie;
-    }
-
-    public boolean isShowAntwoordLocatie() {
-        return showAntwoordLocatie;
-    }
-
-    public void setShowAntwoordLocatie(boolean showAntwoordLocatie) {
-        this.showAntwoordLocatie = showAntwoordLocatie;
+    public void setShowElementLocatie(boolean showElementLocatie) {
+        this.showElementLocatie = showElementLocatie;
     }
 
     public boolean isShowName() {
@@ -72,26 +60,35 @@ public class Vraag {
         this.showLetter = showLetter;
     }
 
-    public DBElement getAntwoordElement() {
-        return antwoordElement;
+    public DBElement getElement() {
+        return element;
     }
 
     public List<DBElement> getDistractorElementen() {
         return distractorElementen;
     }
 
-    public DBElement getVraagElement() {
-        return vraagElement;
-    }
-
     //constructor
-    public Vraag(String vraag, String antwoord, QuestionFragment vraagtypeFragment, List<String> distractors, int kaart, Boolean TekenAlleLocaties){
+    public Vraag(String vraag, String antwoord, QuestionFragment vraagtypeFragment, List<String> distractors, int kaart, DBElement element, List<DBElement> distractorElementen){
         this.vraag = vraag;
         this.antwoord = antwoord;
         this.vraagtypeFragment = vraagtypeFragment;
         this.distractors = distractors;
         this.kaart = kaart;
-        this.TekenAlleLocaties = TekenAlleLocaties;
+        this.element = element;
+        this.distractorElementen = distractorElementen;
+    }
+
+    public Vraag(String vraag, int antwoordX, int antwoordY, QuestionFragment vraagtypeFragment, List<String> distractors, int kaart, DBElement element, List<DBElement> distractorElementen){
+        this.vraag = vraag;
+        this.antwoord = "loc";
+        this.antwoordX = antwoordX;
+        this.antwoordY = antwoordY;
+        this.vraagtypeFragment = vraagtypeFragment;
+        this.distractors = distractors;
+        this.kaart = kaart;
+        this.element = element;
+        this.distractorElementen = distractorElementen;
     }
 
     //checkt of het gegeven antwoord overeenkomt met het juiste antwoord
@@ -99,8 +96,10 @@ public class Vraag {
         return (answer.equalsIgnoreCase(this.antwoord));
     }
     public boolean CheckAnswer(int x, int y){
-        for (int i = 0; i < 10; i++){
-            if((antwoordElement.getLocatieX() == x-5+i) && (antwoordElement.getLocatieY() == y-5+i)){return true;}
+        for (int i = 0; i < 100; i++){
+            for(int j = 0; j < 100; j++){
+                if(x+i-50 == element.getLocatieX() && y+j-50 == element.getLocatieY()){return true;}
+            }
         }
         return false;
     }

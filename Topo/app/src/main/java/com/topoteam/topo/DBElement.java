@@ -34,18 +34,13 @@ public class DBElement{
         return hoofdstadvan;
     }
 
-    public DBElement(String naam, int locatieX, int locatieY, String provincie, String land, int hoofdstadvan){
+    public DBElement(String naam, int locatieX, int locatieY, String provincie, String land, int hoofdstadvan, String type){
         this.naam = naam;
         this.locatieX = locatieX;
         this.locatieY = locatieY;
         this.provincie = provincie;
         this.land = land;
         this.hoofdstadvan = hoofdstadvan;
+        this.type = type;
     }
-
-    public DBElement(String DBResult){
-        // construeer element uit 1 entry van de database
-    }
-
-
 }

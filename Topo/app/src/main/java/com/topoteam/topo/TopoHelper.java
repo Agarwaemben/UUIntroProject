@@ -56,7 +56,7 @@ public class TopoHelper extends SQLiteOpenHelper
         //Als er geen database is --> lege database aanmaken en de inhoud van TopoBase.db hierin kopieren (uit de assets folder).
 
         boolean mDataBaseExist = checkDataBase();
-        if(mDataBaseExist)
+        if(!mDataBaseExist)
         {
             this.getReadableDatabase();
             this.close();

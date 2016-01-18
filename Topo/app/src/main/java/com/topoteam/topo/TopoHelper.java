@@ -127,7 +127,6 @@ public class TopoHelper extends SQLiteOpenHelper
         // creer lege lijst met elementen
         ArrayList<DBElement> values = new ArrayList<DBElement>();
         String query = "SELECT * FROM "+ TABLE + " WHERE Soort = '" + Soort + "'"; // creer query
-        System.out.println("QUERY: " + query);
 
         cursor = mDataBase.rawQuery(query, null); // voer de query uit en sla het op in een cursor
 
@@ -177,8 +176,6 @@ public class TopoHelper extends SQLiteOpenHelper
             }
         }
 
-        System.out.println("ELEMENTENSIZE = " + elements.size());
-
         // voor elk element in de elementenlijst
         for(DBElement element : elements){
             // creer lijst voor mogelijke vraaggenerators
@@ -195,8 +192,6 @@ public class TopoHelper extends SQLiteOpenHelper
             // loop door alle vraaggenerators
             for(VraagGenerator v:vraagGenerators) {
                 // check voor geschiktheid voor de geselecteerde opties
-                System.out.println("TYPECHECK: " + element.getType() + v.AllowsType(mContext, element.getType()) + v.isVraagType(mContext, soort_Vraag));
-
                 if (v.AllowsType(mContext, element.getType()) && v.isVraagType(mContext, soort_Vraag)) {
                     // voeg vraaggenerator toe aan mogelijke vraaggenerators
                     mogelijkeVragen.add(v);

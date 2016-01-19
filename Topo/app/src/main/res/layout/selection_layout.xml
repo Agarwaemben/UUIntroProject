@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/tAppName"
-            android:text="Selectie"
+            android:text="Stel je spel samen"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
@@ -113,6 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <CheckBox
                 android:text="  Meerkeuze vragen"
                 android:id="@+id/checkBox_meerkeuzeVraag"
@@ -142,7 +143,7 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:text="Start spel"
+            android:text="Start spel!"
             android:id="@+id/start_spel_button"
             android:textSize="24sp"
             android:layout_width="fill_parent"

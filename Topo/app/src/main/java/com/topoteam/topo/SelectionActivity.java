@@ -188,15 +188,15 @@ public class SelectionActivity extends Activity {
 
         Intent intent = new Intent(this,GameActivity.class);
 
-        intent.putExtra("Regio", spinnerRegio.getSelectedItem().toString());
-        intent.putExtra("Steden", checkBoxSteden.isChecked());
-        intent.putExtra("Provincies", checkBoxProvincies.isChecked());
-        intent.putExtra("Landen", checkBoxLanden.isChecked());
-        intent.putExtra("Wateren", checkBoxWateren.isChecked());
-        intent.putExtra("Gebergtes", checkBoxGebergtes.isChecked());
-        intent.putExtra("Meerkeuze", checkBoxMeerkVraag.isChecked());
-        intent.putExtra("Aanwijs", checkBoxAanwVraag.isChecked());
-        intent.putExtra("Invul", checkBoxInvulVraag.isChecked());
+        intent.putExtra(getString(R.string.Regio), spinnerRegio.getSelectedItem().toString());
+ -      intent.putExtra(getString(R.string.Steden), checkBoxSteden.isChecked());
+ -      intent.putExtra(getString(R.string.Provincies), checkBoxProvincies.isChecked());
+ -      intent.putExtra(getString(R.string.Landen), checkBoxLanden.isChecked());
+ -      intent.putExtra(getString(R.string.Wateren), checkBoxWateren.isChecked());
+ -      intent.putExtra(getString(R.string.Gebergtes), checkBoxGebergtes.isChecked());
+ -      intent.putExtra(getString(R.string.Meerkeuze), checkBoxMeerkVraag.isChecked());
+ -      intent.putExtra(getString(R.string.Aanwijs), checkBoxAanwVraag.isChecked());
+ -      intent.putExtra(getString(R.string.Invul), checkBoxInvulVraag.isChecked());
 
         startActivity(intent);
     }

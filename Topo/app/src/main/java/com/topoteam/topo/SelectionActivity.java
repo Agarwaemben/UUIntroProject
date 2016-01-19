@@ -55,7 +55,7 @@ public class SelectionActivity extends Activity {
 
                 /*Als de user Nederland selecteert mag hij niet Landen of Gebergtes selecteren.
                 Om verkeerde mogelijkheden te voorkomen deactiveren / unchecken we de checkboxen */
-                if (itemSelected.equals(getString(R.string.Nederland))) {
+                if (itemSelected.equals("Nederland")) {
                     checkBoxSteden.setEnabled(true);
                     checkBoxProvincies.setEnabled(true);
                     checkBoxLanden.setEnabled(false);
@@ -64,7 +64,7 @@ public class SelectionActivity extends Activity {
 
                     emptyOnderdeelCheckBoxen();
                     emptyVraagCheckBoxen();
-
+                    buttonStartSpel.setEnabled(false);
                 } else {
                     checkBoxSteden.setEnabled(true);
                     checkBoxProvincies.setEnabled(false);
@@ -74,6 +74,7 @@ public class SelectionActivity extends Activity {
 
                     emptyOnderdeelCheckBoxen();
                     emptyVraagCheckBoxen();
+                    buttonStartSpel.setEnabled(false);
                 }
             }
 
@@ -116,11 +117,13 @@ public class SelectionActivity extends Activity {
             checkBoxInvulVraag.setEnabled(true);
         }
 
-        /*Als de laatste click event ervoor zorgde dat er geen checkboxen gechecked waren, worden gedeactiveerd.
-        * Omdat het doorgaan naar het oefenspel afhankelijk is van of een vraagsoort geselecteerd is, moeten we deze nu resetten.*/
+        /*Als er geen checkboxen gechecked zijn, worden de vraag checkboxen gedeactiveerd.
+         * Omdat het doorgaan naar het oefenspel afhankelijk is van of een vraagsoort geselecteerd is, moeten we deze nu resetten.*/
         else {
             ((TextView)findViewById(R.id.vraag_textview)).setEnabled(false);
             emptyVraagCheckBoxen();
+
+            buttonStartSpel.setEnabled(false);
         }
     }
 
@@ -185,15 +188,15 @@ public class SelectionActivity extends Activity {
 
         Intent intent = new Intent(this,GameActivity.class);
 
-        intent.putExtra(getString(R.string.Regio), spinnerRegio.getSelectedItem().toString());
-        intent.putExtra(getString(R.string.Steden), checkBoxSteden.isChecked());
-        intent.putExtra(getString(R.string.Provincies), checkBoxProvincies.isChecked());
-        intent.putExtra(getString(R.string.Landen), checkBoxLanden.isChecked());
-        intent.putExtra(getString(R.string.Wateren), checkBoxWateren.isChecked());
-        intent.putExtra(getString(R.string.Gebergtes), checkBoxGebergtes.isChecked());
-        intent.putExtra(getString(R.string.Meerkeuze), checkBoxMeerkVraag.isChecked());
-        intent.putExtra(getString(R.string.Aanwijs), checkBoxAanwVraag.isChecked());
-        intent.putExtra(getString(R.string.Invul), checkBoxInvulVraag.isChecked());
+        intent.putExtra("Regio", spinnerRegio.getSelectedItem().toString());
+        intent.putExtra("Steden", checkBoxSteden.isChecked());
+        intent.putExtra("Provincies", checkBoxProvincies.isChecked());
+        intent.putExtra("Landen", checkBoxLanden.isChecked());
+        intent.putExtra("Wateren", checkBoxWateren.isChecked());
+        intent.putExtra("Gebergtes", checkBoxGebergtes.isChecked());
+        intent.putExtra("Meerkeuze", checkBoxMeerkVraag.isChecked());
+        intent.putExtra("Aanwijs", checkBoxAanwVraag.isChecked());
+        intent.putExtra("Invul", checkBoxInvulVraag.isChecked());
 
         startActivity(intent);
     }

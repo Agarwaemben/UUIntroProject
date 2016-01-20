@@ -190,6 +190,20 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
                 huidigeFragment.onShowHint();
             }
         });
+        
+        Button b2 = (Button)findViewById(R.id.button_Pas);
+        b2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                onPas();
+            }
+        });
+        
+        Button b3 = (Button)findViewById(R.id.button_VorigeGoed);
+        b3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                onVorigeGoed();
+            }
+        });
     }
 
     // methode om tekst van textview te setten
@@ -197,7 +211,14 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         TextView v = (TextView) findViewById(id);
         v.setText(text);
     }
-
+    
+    private void onPas(){
+        //
+    }
+    
+    private void onVorigeGoed(){
+        //
+    }
 
     //getters en setters voor de vraagobjecten
     @Override

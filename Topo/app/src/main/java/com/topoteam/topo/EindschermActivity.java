@@ -1,6 +1,7 @@
 package com.topoteam.topo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,9 +21,26 @@ public class EindschermActivity extends AppCompatActivity {
         int aantal_vragen = gameactivity.getIntExtra(getString(R.string.Aantal_vragen), 1);
 
         //laat de score zien op het scherm
-        TextView laatste_score = (TextView)findViewById(R.id.goed_beantwoord);
-        laatste_score.setText("Je hebt "+score+" van de "+aantal_vragen+" goed beantwoord");
+        if(score > aantal_vragen/2)
+        {
+            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
+            laatste_score.setTextColor(Color.GREEN);
+            laatste_score.setText("Niet slecht! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
+        }
 
+        else if (score == aantal_vragen)
+        {
+            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
+            laatste_score.setTextColor(Color.GREEN);
+            laatste_score.setText("Perfect! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
+        }
+
+        else
+        {
+            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
+            laatste_score.setTextColor(Color.RED);
+            laatste_score.setText("Blijf oefenen! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
+        }
     }
 
     public void retryButton(View view) {

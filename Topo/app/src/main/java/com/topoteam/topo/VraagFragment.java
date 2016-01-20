@@ -130,13 +130,13 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         c.drawRect(scaledX - 10, scaledY -10 , scaledX + 15, scaledY + 15,p);
     }
 
+    // functie om een string text te tekenen
     protected void drawText(Canvas c, int x, int y, String text){
-        scaleFactorX = originalWidth / scaledWidth;
-        scaleFactorY = originalHeight / scaledHeight;
-
+        // bereken de geschaalde positie van x en y
         int scaledX = (int)(x/scaleFactorX);
         int scaledY = (int)(y/scaleFactorY);
 
+        // teken de tekst
         c.drawText(text, scaledX, scaledY, new Paint());
     }
 

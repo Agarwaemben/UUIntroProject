@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
@@ -124,7 +125,9 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         int scaledY = (int)(y/scaleFactorY);
 
         // teken het element
-        c.drawRect(scaledX - 10, scaledY -10 , scaledX + 10, scaledY + 10, new Paint());
+        Paint p = new Paint();
+        p.setColor(Color.BLACK);
+        c.drawRect(scaledX - 10, scaledY -10 , scaledX + 15, scaledY + 15,p);
     }
 
     protected void drawText(Canvas c, int x, int y, String text){

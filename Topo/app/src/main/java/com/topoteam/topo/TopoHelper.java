@@ -124,6 +124,16 @@ public class TopoHelper extends SQLiteOpenHelper
 
     // methode om een lijst met geselecteerde elementen uit de database te returnen
     public ArrayList<DBElement> getTopodata(String TABLE, String Soort) {
+        try
+        {
+            copyDataBase();
+            Log.e(TAG, "createDatabase database created");
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+
         // creer lege lijst met elementen
         ArrayList<DBElement> values = new ArrayList<DBElement>();
         String query = "SELECT * FROM "+ TABLE + " WHERE Soort = '" + Soort + "'"; // creer query

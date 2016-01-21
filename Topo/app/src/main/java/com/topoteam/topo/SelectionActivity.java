@@ -21,7 +21,6 @@ public class SelectionActivity extends Activity {
             checkBoxMeerkVraag, checkBoxAanwVraag, checkBoxInvulVraag;
     Button buttonStartSpel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +121,6 @@ public class SelectionActivity extends Activity {
         else {
             ((TextView)findViewById(R.id.vraag_textview)).setEnabled(false);
             emptyVraagCheckBoxen();
-
             buttonStartSpel.setEnabled(false);
         }
     }
@@ -178,9 +176,9 @@ public class SelectionActivity extends Activity {
         checkBoxAanwVraag.setChecked(false);
         checkBoxInvulVraag.setChecked(false);
 
-        checkBoxMeerkVraag.setEnabled(true);
-        checkBoxAanwVraag.setEnabled(true);
-        checkBoxInvulVraag.setEnabled(true);
+        checkBoxMeerkVraag.setEnabled(false);
+        checkBoxAanwVraag.setEnabled(false);
+        checkBoxInvulVraag.setEnabled(false);
     }
 
     //Methode om door te gaan naar het oefenspel

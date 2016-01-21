@@ -10,8 +10,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center|top"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:weightSum="1">
 
         <TextView
@@ -19,8 +19,15 @@
             android:text="Stel je spel samen"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             style="@style/style1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/darker_gray"
+            />
 
         <TextView
             android:text="Selecteer de regio die je wilt oefenen"
@@ -36,6 +43,13 @@
             android:layout_height="wrap_content">
         </Spinner>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/darker_gray"
+            />
+
         <TextView
             android:id="@+id/onderdeel_textview"
             android:text="Selecteer welke onderdelen je wilt oefenen"
@@ -45,58 +59,126 @@
             android:enabled="false"
             android:textColor="@android:color/white"/>
 
-        <LinearLayout
-            android:gravity="center|left"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
+                android:layout_marginBottom="7dp"
+                android:text="Steden"
+                android:enabled="false"
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Steden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_steden"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
-                android:onClick="onOnderdeelCheckBoxClick"
+                android:text="Provincies"
                 android:enabled="false"
-                android:checked="false"
-                style="@style/style6"/>
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Provincies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_provincies"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
-                android:onClick="onOnderdeelCheckBoxClick"
+                android:text="Landen"
                 android:enabled="false"
-                android:checked="false"
-                style="@style/style6"/>
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Landen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_landen"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
-                android:onClick="onOnderdeelCheckBoxClick"
+                android:text="Wateren"
                 android:enabled="false"
-                android:checked="false"
-                style="@style/style6"/>
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Wateren"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_wateren"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
-                android:onClick="onOnderdeelCheckBoxClick"
+                android:text="Gebergtes"
                 android:enabled="false"
-                android:checked="false"
-                style="@style/style6"/>
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Gebergtes"
-                android:id="@+id/checkBox_gebergtes"
-                android:layout_marginBottom="40dp"
-                android:onClick="onOnderdeelCheckBoxClick"
-                android:enabled="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
                 android:checked="false"
-                style="@style/style6"/>
+                android:enabled="false"
+                android:onClick="onOnderdeelCheckBoxClick"
+                android:id="@+id/checkBox_gebergtes"
+                />
 
-        </LinearLayout>
+        </GridLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/darker_gray"
+            />
 
         <TextView
             android:id="@+id/vraag_textview"
@@ -107,50 +189,87 @@
             android:enabled="false"
             android:textColor="@android:color/white"/>
 
-        <LinearLayout
-            android:gravity="center|left"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="3">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
+                android:layout_marginBottom="7dp"
+                android:text="Meerkeuzevragen"
+                android:enabled="false"
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Meerkeuze vragen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onVraagCheckBoxClick"
                 android:id="@+id/checkBox_meerkeuzeVraag"
-                android:layout_marginBottom="7dp"
-                android:enabled="false"
-                android:onClick="onVraagCheckBoxClick"
+                />
 
-                style="@style/style6"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
+                android:layout_marginBottom="7dp"
+                android:text="Aanwijsvragen"
+                android:enabled="false"
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Aanwijs vragen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onVraagCheckBoxClick"
                 android:id="@+id/checkBox_aanwijsVraag"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:text="Open vragen"
                 android:enabled="false"
-                android:onClick="onVraagCheckBoxClick"
-                style="@style/style6"/>
+                style="@style/style6"
+                />
 
             <CheckBox
-                android:text="  Invul vragen"
-                android:id="@+id/checkBox_invulVraag"
-                android:layout_marginBottom="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="1"
+                android:checked="false"
                 android:enabled="false"
                 android:onClick="onVraagCheckBoxClick"
-                style="@style/style6"/>
+                android:id="@+id/checkBox_invulVraag"
+                />
 
-        </LinearLayout>
+        </GridLayout>
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:text="Start spel!"
-            android:id="@+id/start_spel_button"
-            android:textSize="24sp"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_margin="0dp"
+            android:text="Start!"
+            android:id="@+id/start_spel_button"
             android:enabled="false"
             android:onClick="onStartSpelClick"
-            android:textColor="@android:color/black"/>
+            style="@style/style3"
+            />
 
     </LinearLayout>
 

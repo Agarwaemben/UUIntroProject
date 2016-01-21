@@ -13,10 +13,9 @@ public class InfoActivity extends Activity {
         setContentView(R.layout.info_layout);
     }
 
-
+    //zorgt ervoor dat de gebruiker naar de website gaat
     public void GoToWebsite(View view3){
         Intent websitebrowser = new Intent (Intent.ACTION_VIEW,Uri.parse("https://www.projects.science.uu.nl/INFOB1PICA/2015/03"));
         startActivity(websitebrowser);
     }
-    //zorgt ervoor dat de gebruiker naar de website gaat
 }

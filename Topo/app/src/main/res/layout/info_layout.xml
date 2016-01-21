@@ -11,54 +11,69 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:text="Info"
+        android:text="@string/info_titel"
         android:layout_gravity="center"
         style="@style/style1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/darker_gray"
+        />
 
     <TextView
         android:text="@string/info1"
         android:padding="15dp"
-        style="@style/style5"/>
+        style="@style/style5"
+        android:layout_marginBottom="20sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/darker_gray"
+        />
 
     <TextView
-        android:text="Oefen"
-        style="@style/style4"/>
+        android:text="@string/info_oefenen"
+        style="@style/style4"
+        android:layout_marginBottom="10sp"/>
 
     <TextView
         android:text="@string/info2"
         android:textColor="@android:color/white"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:layout_marginBottom="35sp"
         style="@style/style5"/>
 
-    <TextView
-        android:text="Game"
-        style="@style/style4"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/darker_gray"
+        />
 
     <TextView
-        android:text="@string/info3"
-        android:layout_gravity="center"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        style="@style/style5"/>
-
-    <TextView
-        android:text="Instellingen"
-        style="@style/style4"/>
+        android:text="@string/info_instellingen"
+        style="@style/style4"
+        android:layout_marginBottom="10sp"/>
 
     <TextView
         android:text="@string/info4"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        style="@style/style5"/>
+        style="@style/style5"
+        android:layout_marginBottom="35sp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ga naar site"
+        android:text="@string/site_button"
         android:layout_gravity="end"
         android:onClick="GoToWebsite"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:padding="5dp"
         android:background="@drawable/roundbutton"/>
 

@@ -24,40 +24,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
-
     //Optionsmenu verwijderd, omdat we eigen 'Instellingen' knop hebben.
 
-
+    // start selectionactivity
     public void SelectieScherm(View view)
     {
         Intent selectie = new Intent(this, SelectionActivity.class);
         startActivity(selectie);
     }
-    // start selectionactivity
 
+    //start infoactivity
     public void InfoScherm(View view)
     {
         Intent info = new Intent(this,InfoActivity.class);
         startActivity(info);
     }
-    //start infoactivity
 
+    // start settingsactivity
     public void InstellingenScherm(View view)
     {
         Intent instellingen = new Intent(this,SettingsActivity.class);
         startActivity(instellingen);
     }
-    // start settingsactivity
 
 }

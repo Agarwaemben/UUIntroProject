@@ -19,25 +19,23 @@ public class EindschermActivity extends AppCompatActivity {
         Intent gameactivity = getIntent();
         int score = gameactivity.getIntExtra(getString(R.string.Score), 0);
         int aantal_vragen = gameactivity.getIntExtra(getString(R.string.Aantal_vragen), 1);
+        TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
 
         //laat de score zien op het scherm
         if(score > aantal_vragen/2)
         {
-            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
             laatste_score.setTextColor(Color.GREEN);
             laatste_score.setText("Niet slecht! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
         }
 
         else if (score == aantal_vragen)
         {
-            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
             laatste_score.setTextColor(Color.GREEN);
             laatste_score.setText("Perfect! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
         }
 
         else
         {
-            TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
             laatste_score.setTextColor(Color.RED);
             laatste_score.setText("Blijf oefenen! Je hebt " + score + " van de " + aantal_vragen + " goed beantwoord. ");
         }

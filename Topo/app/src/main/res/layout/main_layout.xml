@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/achtergrond"
+        android:src="@drawable/earth1"/>
 
     <TextView
         android:id="@+id/AppName"
@@ -19,7 +26,7 @@
         android:textStyle="italic"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="35dp"/>
 
     <Button
         android:id="@+id/oefen_knop"
@@ -33,7 +40,7 @@
         android:textSize="35sp"
         android:padding="5dp"
         android:onClick="oefenButton"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true" />
 
 
@@ -44,11 +51,9 @@
         android:text="Settings"
         android:textAllCaps="true"
         android:layout_gravity="center"
-        android:layout_below = "@+id/oefen_knop"
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
-        android:layout_margin="20dp"
         android:onClick="settingsButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -63,6 +68,7 @@
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
+        android:layout_margin="15dp"
         android:onClick="infoButton"
         android:layout_below="@id/instellingen_knop"
         android:layout_centerInParent="true"/>

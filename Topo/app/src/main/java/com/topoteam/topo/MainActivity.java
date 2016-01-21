@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView v = (ImageView)findViewById(R.id.main_logo);
-        v.setImageResource(R.drawable.titel2);
+      /*  ImageView v = (ImageView)findViewById(R.id.main_logo);
+        v.setImageResource(R.drawable.titel2);*/
     }
     //Optionsmenu verwijderd, omdat we eigen 'Instellingen' knop hebben.
 

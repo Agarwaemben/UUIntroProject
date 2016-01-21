@@ -4,17 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/background">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView" />
-        <!--
-        android:src="@drawable/earth1"/>
-        -->
     <TextView
-        android:id="@+id/background"
+        android:id="@+id/AppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PocketTopo"
@@ -24,9 +17,9 @@
         android:textSize="50sp"
         android:textColor="@android:color/white"
         android:textStyle="italic"
-        android:layout_below="@+id/imageView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp" />
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/oefen_knop"
@@ -35,12 +28,12 @@
         android:text="Oefen"
         android:textAllCaps="true"
         android:layout_gravity="center"
+        android:layout_below="@id/AppName"
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
         android:onClick="oefenButton"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/background"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true" />
 
 
@@ -51,13 +44,14 @@
         android:text="Settings"
         android:textAllCaps="true"
         android:layout_gravity="center"
+        android:layout_below = "@+id/oefen_knop"
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         android:onClick="settingsButton"
-        android:layout_below="@id/oefen_knop"
-        android:layout_centerInParent="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/help_knop"
@@ -69,7 +63,6 @@
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
-        android:layout_margin="15dp"
         android:onClick="infoButton"
         android:layout_below="@id/instellingen_knop"
         android:layout_centerInParent="true"/>

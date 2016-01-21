@@ -21,7 +21,7 @@ public class EindschermActivity extends AppCompatActivity {
         int aantal_vragen = gameactivity.getIntExtra(getString(R.string.Aantal_vragen), 1);
 
         //laat de score zien op het scherm
-        if(score > aantal_vragen/2)
+        if(score > aantal_vragen/2 && score < aantal_vragen)
         {
             TextView laatste_score = (TextView) findViewById(R.id.goed_beantwoord);
             laatste_score.setTextColor(Color.GREEN);

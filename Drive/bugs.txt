@@ -1,0 +1,5 @@
+-Door middel van knopjes spammen met meerkeuze, in een keer 5 buttons.
+-Eenmaal 5 buttons gegenereerd blijft die 5 buttons behouden.
+-Na een aantal vragen genereert de app 6 buttons.
+-Eenmaal klaar, retry zorgt ervoor dat de 5 buttons behouden worden.
+-

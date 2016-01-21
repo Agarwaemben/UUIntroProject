@@ -40,7 +40,7 @@ public class TopoHelper extends SQLiteOpenHelper
     {
         super(context, DB_NAME, null, 1);
         //path aanpassen aan android versie (gaf problemen met bepaalde versies van Android)
-        if(android.os.Build.VERSION.SDK_INT >= 17){ 
+        if(android.os.Build.VERSION.SDK_INT >= 17){
             DB_PATH = "/data/data/com.topoteam.topo/databases/";
         }
         else

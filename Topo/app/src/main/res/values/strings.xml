@@ -9,10 +9,10 @@
     <string name="pref_title_colorblind">Kleurenblind modus</string>
     <string name="pref_title_repeatq">Herhalen vragen</string>
     <string name="pref_sum_repeatq">Zet het herhalen van fout beantwoorde vragen aan/uit.</string>
-    <string name="info1">Welkom bij PocketTopo! Deze app helpt je op een leuke en snelle manier topografie te leren. Hieronder vind je meer informatie over de verschillende onderdelen van PocketTopo.</string>
-    <string name="info2">Oefen hier de topografie van Nederland. Je wordt eerst naar een scherm gebracht waar je kan kiezen wat en hoe je wil leren. Daarna begint het spel en moet je het goede antwoord geven op de vraag</string>
-    <!--<string name="info3">Gebruik hier alles wat je hebt geleerd bij het oefenen om een zo hoog mogelijke score te behalen!</string>-->
-    <string name="info4">Je kunt bij de instellingen o.a. het geluid en kleurenblindheidmodus aanpassen.</string>
+    <string name="info1">Welkom bij PocketTopo! Een leuke en snelle manier om topografie te leren. Hier vind je informatie over de verschillende onderdelen van PocketTopo.</string>
+    <string name="info2">Oefen hier de topografie van Nederland, Europa en de Wereld. Er zijn aanwijs-, multiplechoice- en open vragen.</string>
+    <string name="info3">Gebruik hier alles wat je hebt geleerd bij het oefenen om een zo hoog mogelijke score te behalen!</string>
+    <string name="info4">Vind hier opties voor: geluid, kleurenblindheid en meer.</string>
     <string name="steden">Steden</string>
     <string name="gebergtes">Gebergtes</string>
     <string name="provincies">Provincies</string>
@@ -33,19 +33,11 @@
     <string name="Nederland">Nederland</string>
     <string name="Score">score</string>
     <string name="Aantal_vragen">aantal_vragen</string>
-    <string name="site_button">Ga naar onze site ></string>
-    <string name="info_instellingen">Instellingen</string>
-    <string name="info_oefenen">Oefen</string>
-    <string name="info_titel">Info</string>
-    <string name="settings_titel">Settings</string>
-    <string name="settings_geluid">Geluidseffecten</string>
-    <string name="settings_opslaan_button">Opslaan</string>
-    <string name="settings_kleur">Kleurenblindmodus</string>
 
     <string-array name="regio_keuzes">
         <item>Nederland</item>
-    <!--<item>Europa</item>
-        <item>Wereld</item>-->
+        <item>Europa</item>
+        <item>Wereld</item>
     </string-array>
     
 </resources>

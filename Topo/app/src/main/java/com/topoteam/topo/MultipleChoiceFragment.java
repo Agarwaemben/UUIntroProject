@@ -32,6 +32,7 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
             Button b = new Button(getActivity()); // creer een nieuwe button
 
             b.setText(options.get(i)); // zet de tekst voor de button
+            b.setTextSize(8);
             b.setTag(R.id.answer_key, options.get(i)); // voeg 1 van de opties toe aan de button
             b.setOnClickListener(buttonClickHandler); // zet de event handler voor de button
 
@@ -42,7 +43,7 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
     }
 
     // event handler voor de antwoordbuttons
-    View.OnClickListener buttonClickHandler = new View.OnClickListener(){
+    private View.OnClickListener buttonClickHandler = new View.OnClickListener(){
         public void onClick(View v){
             boolean result = questionListener.CheckAnswer((String)v.getTag(R.id.answer_key)); // check het antwoord dat gegeven is
             questionListener.endQuestion(result, hintShown);

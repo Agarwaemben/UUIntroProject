@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
@@ -124,10 +123,10 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         int scaledX = (int)(x/scaleFactorX);
         int scaledY = (int)(y/scaleFactorY);
 
+        System.out.println("WAAR IS HET PUNT");
+
         // teken het element
-        Paint p = new Paint();
-        p.setColor(Color.BLACK);
-        c.drawRect(scaledX - 10, scaledY -10 , scaledX + 15, scaledY + 15,p);
+        c.drawCircle(scaledX, scaledY, 20, new Paint());
     }
 
     // functie om een string text te tekenen

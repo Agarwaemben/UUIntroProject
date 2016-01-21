@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class OpenQuestionFragment extends VraagFragment implements QuestionFragment {
-    EditText inputfield; // inputveld
+    private EditText inputfield; // inputveld
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class OpenQuestionFragment extends VraagFragment implements QuestionFragm
         return v;
     }
 
-    View.OnClickListener buttonClickHandler = new View.OnClickListener(){
+    private View.OnClickListener buttonClickHandler = new View.OnClickListener(){
         public void onClick(View v){
             // krijg de invoer in het invoerveld en check het antwoord
             boolean result = questionListener.CheckAnswer(inputfield.getText().toString());

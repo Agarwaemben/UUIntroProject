@@ -10,11 +10,13 @@
     android:gravity="center"
     android:background="@color/colorPrimary">
 
+    <!--
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/achtergrond"
         android:src="@drawable/earth1"/>
+    -->
 
     <TextView
         android:id="@+id/AppName"

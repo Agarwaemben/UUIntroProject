@@ -48,7 +48,7 @@ public class SelectionActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ((TextView) findViewById(R.id.onderdeel_textview)).setEnabled(true);
+                findViewById(R.id.onderdeel_textview).setEnabled(true);
                 //Als de user een keuze heeft gemaakt slaan we die op
                 String itemSelected = parent.getItemAtPosition(position).toString();
 
@@ -109,7 +109,7 @@ public class SelectionActivity extends Activity {
         if (checkBoxSteden.isChecked() || checkBoxProvincies.isChecked() || checkBoxLanden.isChecked() ||
                 checkBoxWateren.isChecked() || checkBoxGebergtes.isChecked()) {
 
-            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(true);
+            findViewById(R.id.vraag_textview).setEnabled(true);
 
             checkBoxMeerkVraag.setEnabled(true);
             checkBoxAanwVraag.setEnabled(true);
@@ -119,7 +119,7 @@ public class SelectionActivity extends Activity {
         /*Als er geen checkboxen gechecked zijn, worden de vraag checkboxen gedeactiveerd.
          * Omdat het doorgaan naar het oefenspel afhankelijk is van of een vraagsoort geselecteerd is, moeten we deze nu resetten.*/
         else {
-            ((TextView)findViewById(R.id.vraag_textview)).setEnabled(false);
+            findViewById(R.id.vraag_textview).setEnabled(false);
             emptyVraagCheckBoxen();
             buttonStartSpel.setEnabled(false);
         }

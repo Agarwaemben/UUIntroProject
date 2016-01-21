@@ -48,6 +48,15 @@ public class TopoHelper extends SQLiteOpenHelper
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         }
         this.mContext = context;
+
+        try
+        {
+            createDataBase();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
         openDataBase();
     }
 

@@ -22,7 +22,7 @@ public class AanwijsVraagFragment extends VraagFragment implements QuestionFragm
         return v;
     }
 
-    View.OnTouchListener onTouchListener = new View.OnTouchListener(){
+    private View.OnTouchListener onTouchListener = new View.OnTouchListener(){
         public boolean onTouch(View v, MotionEvent event){
             // krijg de coordinaten van de geklikte positie
             float[] coords = getPointerCoords((ImageView) v, event);

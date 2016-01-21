@@ -23,28 +23,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity implements QuestionListener {
-    SharedPreferences preferences; // global app settings
+    private SharedPreferences preferences; // global app settings
 
-    List<Vraag> vragenlijst; // lijst met alle vragen
-    Vraag huidigeVraag; // huidige vraag
-    int huidigeVraagInt, score; // huidigevraag nummer, score
-    TopoHelper topoHelper; // connectie met database
-    QuestionFragment huidigeFragment; // huidige vraag fragment
+    private List<Vraag> vragenlijst; // lijst met alle vragen
+    private Vraag huidigeVraag; // huidige vraag
+    private int huidigeVraagInt;
+    private int score; // huidigevraag nummer, score
+    private TopoHelper topoHelper; // connectie met database
+    private QuestionFragment huidigeFragment; // huidige vraag fragment
 
     // variabelen voor de connectie met selectionactivity
-    String regio;
-    List<String> types, vraagtypes;
+    private String regio;
+    private List<String> types;
+    private List<String> vraagtypes;
 
     // variabelen om geluid mogelijk te maken
-    SoundPool sound;
-    AudioAttributes aa;
-    int maxStreams, volume;
+    private SoundPool sound;
+    private AudioAttributes aa;
+    private int maxStreams;
+    private int volume;
 
     // referenties naar de geluidsbestanden
-    int soundGoed, soundFout;
+    private int soundGoed;
+    private int soundFout;
 
     // settings voor het geluid
-    boolean soundEffects, repeatQuestion;
+    private boolean soundEffects;
+    private boolean repeatQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

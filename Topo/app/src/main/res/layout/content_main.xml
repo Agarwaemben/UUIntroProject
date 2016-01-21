@@ -1,83 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity"
-    android:gravity="center|center_vertical|center_horizontal">
+    android:gravity="center"
+    android:background="@drawable/background">
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Oefen"
-        android:id="@+id/bTraining"
-        android:maxWidth="200dp"
-        android:minWidth="200dp"
-        android:textSize="18sp"
-        android:layout_below="@+id/tAppName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:onClick="SelectieScherm"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mini game"
-        android:id="@+id/bSpeel"
-        android:layout_below="@+id/bTraining"
-        android:layout_alignLeft="@+id/bTraining"
-        android:layout_alignStart="@+id/bTraining"
-        android:layout_marginTop="30dp"
-        android:layout_alignRight="@+id/bTraining"
-        android:layout_alignEnd="@+id/bTraining"
-        android:textSize="18sp"
-        android:onClick="MiniGameScherm"
+        android:id="@+id/main_logo"
         />
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="instellingen"
-        android:id="@+id/bTutorial"
-        android:layout_below="@+id/bSpeel"
-        android:layout_alignRight="@+id/bSpeel"
-        android:layout_alignEnd="@+id/bSpeel"
-        android:layout_alignLeft="@+id/bSpeel"
-        android:layout_alignStart="@+id/bSpeel"
-        android:layout_marginTop="30dp"
-        android:textSize="18sp"
-        android:onClick="InstellingenScherm"
-        />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Info"
-        android:id="@+id/bSettings"
-        android:layout_below="@+id/bTutorial"
-        android:layout_marginTop="30dp"
-        android:layout_alignRight="@+id/bTutorial"
-        android:layout_alignEnd="@+id/bTutorial"
-        android:layout_alignLeft="@+id/bTutorial"
-        android:layout_alignStart="@+id/bTutorial"
-        android:textSize="18sp"
-        android:onClick="InfoScherm"
-        />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/bTraining"
+            android:text="Oefen"
+            android:textSize="18sp"
+            android:onClick="SelectieScherm"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="PocketTopo"
-        android:id="@+id/tAppName"
-        android:textSize="40sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/bTraining"
-        android:layout_alignStart="@+id/bTraining"
-        android:layout_marginTop="-50dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/bTutorial"
+            android:text="Instellingen"
+            android:textSize="18sp"
+            android:onClick="InstellingenScherm"
+            />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bSettings"
+            android:text="Info"
+            android:textSize="18sp"
+            android:onClick="InfoScherm"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

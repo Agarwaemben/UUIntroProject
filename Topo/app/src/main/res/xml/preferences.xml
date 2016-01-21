@@ -17,13 +17,6 @@
             android:defaultValue="true"
             />
 
-        <CheckBoxPreference
-            android:key="pref_key_colorblind"
-            android:summary="@string/pref_sum_colorblind"
-            android:title="@string/pref_title_colorblind"
-            android:defaultValue="false"
-            />
-
     </PreferenceCategory>
 
 </PreferenceScreen>

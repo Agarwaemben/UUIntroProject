@@ -42,7 +42,7 @@
         android:background="@drawable/roundbutton"
         android:textSize="35sp"
         android:padding="5dp"
-        android:onClick="oefenButton"
+        android:onClick="SelectieScherm"
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true" />
 
@@ -59,7 +59,7 @@
         android:layout_marginTop="20dp"
         android:textSize="35sp"
         android:padding="5dp"
-        android:onClick="settingsButton"
+        android:onClick="InstellingenScherm"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -74,7 +74,7 @@
         android:textSize="35sp"
         android:padding="5dp"
         android:layout_margin="15dp"
-        android:onClick="infoButton"
+        android:onClick="InfoScherm"
         android:layout_below="@+id/instellingen_knop"
         android:layout_centerInParent="true"/>
 

@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="HINT"
         android:id="@+id/button_Hint"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:text="PAS"
         android:id="@+id/button_Pas"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -67,6 +69,7 @@
         android:layout_height="wrap_content"
         android:text="VORIGE GOED"
         android:id="@+id/button_VorigeGoed"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

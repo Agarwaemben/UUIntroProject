@@ -31,23 +31,13 @@
         android:paddingRight="15dp"
         style="@style/style5"/>
 
-    <TextView
-        android:text="Game"
-        style="@style/style4"/>
-
-    <TextView
-        android:text="@string/info3"
-        android:layout_gravity="center"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        style="@style/style5"/>
 
     <TextView
         android:text="Instellingen"
         style="@style/style4"/>
 
     <TextView
-        android:text="@string/info4"
+        android:text="@string/info3"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         style="@style/style5"/>

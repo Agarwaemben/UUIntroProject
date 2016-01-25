@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
@@ -26,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:background="@android:color/darker_gray"
             />
 
@@ -40,13 +42,16 @@
             android:id="@+id/regio_selectie_spinner"
             android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/button">
         </Spinner>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:background="@android:color/darker_gray"
             />
 
@@ -71,6 +76,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Steden"
                 android:enabled="false"
                 style="@style/style6"
@@ -80,12 +86,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_steden"
+                android:button="@drawable/custom_checkbox"
                 />
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,6 +100,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Provincies"
                 android:enabled="false"
                 style="@style/style6"
@@ -102,10 +110,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_provincies"
+                android:button="@drawable/custom_checkbox"
                 />
 
             <TextView
@@ -114,6 +124,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Landen"
                 android:enabled="false"
                 style="@style/style6"
@@ -123,10 +134,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_landen"
+                android:button="@drawable/custom_checkbox"
                 />
 
             <TextView
@@ -135,6 +148,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Wateren"
                 android:enabled="false"
                 style="@style/style6"
@@ -144,10 +158,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_wateren"
+                android:button="@drawable/custom_checkbox"
                 />
 
             <TextView
@@ -156,6 +172,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Gebergtes"
                 android:enabled="false"
                 style="@style/style6"
@@ -165,10 +182,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onOnderdeelCheckBoxClick"
                 android:id="@+id/checkBox_gebergtes"
+                android:button="@drawable/custom_checkbox"
                 />
 
         </GridLayout>
@@ -177,6 +197,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:background="@android:color/darker_gray"
             />
 
@@ -201,6 +223,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Meerkeuzevragen"
                 android:enabled="false"
                 style="@style/style6"
@@ -209,11 +232,13 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:layout_columnSpan="1"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onVraagCheckBoxClick"
                 android:id="@+id/checkBox_meerkeuzeVraag"
+                android:button="@drawable/custom_checkbox"
                 />
 
             <TextView
@@ -222,6 +247,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="20dp"
                 android:text="Aanwijsvragen"
                 android:enabled="false"
                 style="@style/style6"
@@ -230,11 +256,13 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:layout_columnSpan="1"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onVraagCheckBoxClick"
                 android:id="@+id/checkBox_aanwijsVraag"
+                android:button="@drawable/custom_checkbox"
                 />
 
             <TextView
@@ -242,7 +270,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal"
                 android:layout_columnSpan="1"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
                 android:text="Open vragen"
                 android:enabled="false"
                 style="@style/style6"
@@ -252,10 +281,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="1"
+                android:layout_marginRight="20dp"
                 android:checked="false"
                 android:enabled="false"
                 android:onClick="onVraagCheckBoxClick"
                 android:id="@+id/checkBox_invulVraag"
+                android:button="@drawable/custom_checkbox"
                 />
 
         </GridLayout>
@@ -263,12 +294,12 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="0dp"
             android:text="Start!"
             android:id="@+id/start_spel_button"
             android:enabled="false"
             android:onClick="onStartSpelClick"
-            style="@style/style3"
+            android:background="@drawable/button"
+            style="@style/style6"
             />
 
     </LinearLayout>

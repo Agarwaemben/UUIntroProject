@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="fill_parent"
+    xmlns:style="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:layout_height="fill_parent">
 
     <TextView
         android:text="Info"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         style="@style/style1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@android:color/darker_gray"
+        />
 
     <TextView
         android:text="@string/info1"
+        android:layout_marginBottom="20dp"
         android:padding="15dp"
         style="@style/style5"/>
 
     <TextView
         android:text="Oefen"
-        style="@style/style4"/>
+        style="@style/style4"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:text="@string/info2"
         android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         style="@style/style5"/>
@@ -34,10 +47,12 @@
 
     <TextView
         android:text="Instellingen"
-        style="@style/style4"/>
+        style="@style/style4"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:text="@string/info3"
+        android:layout_marginBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         style="@style/style5"/>
@@ -45,12 +60,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ga naar site"
+        android:text="Ga naar de site"
+        android:textSize="15dp"
         android:layout_gravity="end"
         android:onClick="GoToWebsite"
-        android:layout_margin="40dp"
-        android:padding="5dp"
-        android:background="@drawable/roundbutton"/>
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button"
+        style="@style/style6"/>
 
 </LinearLayout>
 </ScrollView>

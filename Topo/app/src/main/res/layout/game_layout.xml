@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@color/colorPrimary">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +13,8 @@
         android:id="@+id/textview_Score"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        style="@style/style6"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +23,9 @@
         android:text="Vraag"
         android:id="@+id/textview_Vraagcounter"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        style="@style/style6"/>
+
 
     <LinearLayout
         android:id="@+id/container_Vraagfragment"
@@ -52,7 +56,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -62,7 +67,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button"/>
         
     <Button
         android:layout_width="wrap_content"
@@ -72,5 +78,6 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button"/>
 </RelativeLayout>

@@ -10,8 +10,8 @@
     <string name="pref_title_repeatq">Herhalen vragen</string>
     <string name="pref_sum_repeatq">Zet het herhalen van fout beantwoorde vragen aan/uit.</string>
     <string name="info1">Welkom bij PocketTopo! Een leuke en snelle manier om topografie te leren. Hier vind je informatie over de verschillende onderdelen van PocketTopo.</string>
-    <string name="info2">Oefen hier de topografie van Nederland. Er zijn aanwijs-, multiplechoice- en open vragen.</string>
-    <string name="info3">Vind hier opties voor: geluid, kleurenblindheid en meer.</string>
+    <string name="info2">Oefen hier de topografie van Nederland. Geef eerst aan hoe je wilt leren, door de onderdelen en vraagsoorten te bepalen. Als je het spel gestart heb moet je het juist antwoord op de vragen geven om je score te verhogen.</string>
+    <string name="info3">Hier kun je instellingen aanpassen naar jouw voorkeur.</string>
     <string name="steden">Steden</string>
     <string name="gebergtes">Gebergtes</string>
     <string name="provincies">Provincies</string>

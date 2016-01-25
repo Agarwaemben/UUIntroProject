@@ -15,44 +15,42 @@
         android:id="@+id/retry_knop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/roundbutton"
+        android:background="@drawable/button"
         android:onClick="retryButton"
-        android:padding="5dp"
         android:text="Retry"
         android:textAllCaps="true"
-        android:textSize="35sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        style="@style/style6"
+        />
 
     <Button
         android:id="@+id/quit_knop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/roundbutton"
+        android:background="@drawable/button"
         android:onClick="quitButton"
-        android:padding="5dp"
         android:text="Quit"
         android:textAllCaps="true"
-        android:textSize="35sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        style="@style/style6"/>
 
     <Button
         android:id="@+id/Home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/roundbutton"
+        android:gravity="center"
+        android:background="@drawable/button"
         android:onClick="homeButton"
-        android:padding="5dp"
         android:text="Home"
         android:textAllCaps="true"
-        android:textSize="35sp"
-
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_alignEnd="@+id/textView"
+        style="@style/style6"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,6 +59,7 @@
         android:textSize="40sp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="91dp" />
+        android:layout_marginTop="91dp"
+        />
 
 </RelativeLayout>

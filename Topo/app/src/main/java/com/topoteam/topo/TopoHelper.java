@@ -203,9 +203,13 @@ public class TopoHelper extends SQLiteOpenHelper
             List<DBElement> distractorElements = new ArrayList<>();
 
             // selecteeer 3 distractorelementen
-            for(int j = 0; j < 3; j++){
-                // krijg random element
-                distractorElements.add(getRandomElement(elements));
+            int n = 0;
+            while(n < 3){
+                DBElement e = getRandomElement(elements);
+                if(!e.getNaam().equals(element.getNaam()) && notDistractor(distractorElements, e)){
+                    distractorElements.add(e);
+                    n++;
+                }
             }
 
             // loop door alle vraaggenerators
@@ -233,5 +237,14 @@ public class TopoHelper extends SQLiteOpenHelper
     private DBElement getRandomElement(List<DBElement> elements){
         Random r = new Random();
         return elements.get(r.nextInt(elements.size()));
+    }
+
+    private boolean notDistractor(List<DBElement> distractorlijst, DBElement nieuw_element){
+        for(DBElement e : distractorlijst){
+            if(e.getNaam()==nieuw_element.getNaam()){
+                return false;
+            }
+        }
+        return true;
     }
 }

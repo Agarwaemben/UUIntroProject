@@ -40,5 +40,8 @@ public class OpenQuestionFragment extends VraagFragment implements QuestionFragm
         }
     };
 
+    public void onShowHint(){
+        inputfield.setText(questionListener.getAntwoord().substring(0, 1));
+    }
 
 }

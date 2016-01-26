@@ -104,7 +104,7 @@ public class VraagFragment extends Fragment implements QuestionFragment{
 
         // laat de hint zien als dat nodig is
         if(showHint) {
-            //
+            drawHint(c);
         }
 
         // set de bewerkte bitmap
@@ -123,8 +123,6 @@ public class VraagFragment extends Fragment implements QuestionFragment{
         int scaledX = (int)(x/scaleFactorX);
         int scaledY = (int)(y/scaleFactorY);
 
-        System.out.println("WAAR IS HET PUNT");
-
         // teken het element
         c.drawCircle(scaledX, scaledY, 20, new Paint());
     }
@@ -137,6 +135,10 @@ public class VraagFragment extends Fragment implements QuestionFragment{
 
         // teken de tekst
         c.drawText(text, scaledX, scaledY, new Paint());
+    }
+
+    protected void drawHint(Canvas c){
+        //
     }
 
     // bereken de originele breedte van de kaart

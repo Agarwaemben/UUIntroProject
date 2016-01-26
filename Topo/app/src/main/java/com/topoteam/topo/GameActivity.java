@@ -50,6 +50,7 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     // settings voor het geluid
     private boolean soundEffects;
     private boolean repeatQuestion;
+    private boolean vorigeGoed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +128,7 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         huidigeVraagInt = 0;
         huidigeVraag = vragenlijst.get(huidigeVraagInt);
         score = 0;
+        vorigeGoed = true;
 
         //initaliseer user interface
         updateUserInterface();
@@ -147,6 +149,7 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         }
 
         huidigeVraagInt++; // ga naar de volgende vraag
+        vorigeGoed = false;
         if(huidigeVraagInt < vragenlijst.size()){ // als er nog een volgende vraag is
             huidigeVraag = vragenlijst.get(huidigeVraagInt); // zet de huidigevraag naar de nieuwe vraag
             updateUserInterface(); // update de user interface
@@ -170,23 +173,8 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     }
 
     private void updateUserInterface(){
-        // update het vraagfragment
-        // prepareer fragmentmanager
-        LinearLayout fragment_container = (LinearLayout) findViewById(R.id.container_Vraagfragment);
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        huidigeFragment = huidigeVraag.getVraagtypeFragment(); // get nieuwe fragment
-        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); // verwijder alle oude fragmenten
-        fragmentTransaction.replace(fragment_container.getId(), (Fragment) huidigeFragment); //vervang het oude fragment met het nieuwe fragment
-        fragmentTransaction.commit(); // voer de verandering uit
-
-        //update de scorelabels
-        setTextViewText(R.id.textview_Score, Integer.toString(score)); // update scorelabel
-        setTextViewText(R.id.textview_Vraagcounter, "Vraag: " + Integer.toString(huidigeVraagInt + 1) + "/" + Integer.toString(vragenlijst.size())); // update vraagcounterlabel
-
-        //update de kaart label
-        setTextViewText(R.id.textview_Settings, "Kaart: " + regio);
+        updateFragments();
+        updateLabels();
 
         // event handler voor de hintknop
         Button b = (Button)findViewById(R.id.button_Hint);
@@ -211,6 +199,30 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
         });
     }
 
+    private void updateFragments(){
+        // update het vraagfragment
+        // prepareer fragmentmanager
+        LinearLayout fragment_container = (LinearLayout) findViewById(R.id.container_Vraagfragment);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        huidigeFragment = huidigeVraag.getVraagtypeFragment(); // get nieuwe fragment
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); // verwijder alle oude fragmenten
+        fragmentTransaction.replace(fragment_container.getId(), (Fragment) huidigeFragment); //vervang het oude fragment met het nieuwe fragment
+        fragmentTransaction.commit(); // voer de verandering uit
+    }
+
+    private void updateLabels(){
+        //update de scorelabels
+        setTextViewText(R.id.textview_Score, Integer.toString(score)); // update scorelabel
+        setTextViewText(R.id.textview_Vraagcounter, "Vraag: " + Integer.toString(huidigeVraagInt + 1) + "/" + Integer.toString(vragenlijst.size())); // update vraagcounterlabel
+
+        //update de kaart label
+        setTextViewText(R.id.textview_Settings, "Kaart: " + regio);
+    }
+
+
+
     // methode om tekst van textview te setten
     private void setTextViewText(int id, String text){
         TextView v = (TextView) findViewById(id);
@@ -218,11 +230,18 @@ public class GameActivity extends AppCompatActivity implements QuestionListener 
     }
     
     private void onPas(){
-        //
+        endQuestion(false, false);
     }
     
     private void onVorigeGoed(){
-        //
+        if(!vorigeGoed) {
+            if (repeatQuestion) {
+                vragenlijst.remove(vragenlijst.size() - 1);
+            }
+            score++;
+            vorigeGoed=true;
+            updateLabels();
+        }
     }
 
     //getters en setters voor de vraagobjecten

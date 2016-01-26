@@ -18,14 +18,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MultipleChoiceFragment extends VraagFragment implements QuestionFragment {
+    List<Button> buttons;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         List<String> options = questionListener.getOptions(); // sla alle opties voor de vraag op
+        buttons = new ArrayList<>();
 
         //voor elk mogelijk antwoord(optie)
         for(int i=0; i<options.size(); i++){
@@ -35,6 +40,7 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
             b.setTextSize(8);
             b.setTag(R.id.answer_key, options.get(i)); // voeg 1 van de opties toe aan de button
             b.setOnClickListener(buttonClickHandler); // zet de event handler voor de button
+            buttons.add(b);
 
             l_answercontainer.addView(b, l_layout_params); // voeg de button toe aan de layout
         }
@@ -50,4 +56,20 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
         }
     };
 
+    public void onShowHint(){
+        if(!showHint){
+            List<Button> distractors = new ArrayList<>();
+            for(Button b : buttons){
+                if(!questionListener.CheckAnswer((String) b.getTag(R.id.answer_key))){
+                    distractors.add(b);
+                }
+            }
+            Random r = new Random();
+            distractors.remove(r.nextInt(distractors.size()));
+            for(Button b : distractors){
+                b.setEnabled(false);
+            }
+            showHint=true;
+        }
+    }
 }

@@ -20,8 +20,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class MultipleChoiceFragment extends VraagFragment implements QuestionFragment {
     List<Button> buttons;
@@ -31,6 +33,12 @@ public class MultipleChoiceFragment extends VraagFragment implements QuestionFra
         View v = super.onCreateView(inflater, container, savedInstanceState);
         List<String> options = questionListener.getOptions(); // sla alle opties voor de vraag op
         buttons = new ArrayList<>();
+
+        // *bugfix* haal alle duplicates uit de options list
+        Set<String> hs = new HashSet<>();
+        hs.addAll(options);
+        options.clear();
+        options.addAll(hs);
 
         //voor elk mogelijk antwoord(optie)
         for(int i=0; i<options.size(); i++){

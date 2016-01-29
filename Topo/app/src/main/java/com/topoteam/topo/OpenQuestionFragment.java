@@ -1,5 +1,6 @@
 package com.topoteam.topo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class OpenQuestionFragment extends VraagFragment implements QuestionFragm
         // creer inputveld
         inputfield = new EditText(getActivity());
         inputfield.setLayoutParams(l_layout_params);
+        inputfield.setTextColor(Color.WHITE);
 
         //creer antwoordknop
         Button answer = new Button(getActivity());
